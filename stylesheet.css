@@ -57,6 +57,11 @@ header {
     opacity: 1.0;
 }
 
+footer {
+    padding-top: 45px;
+    padding-bottom: 30px;
+}
+
 footer span {
     display: block;
     margin: 0 auto;
