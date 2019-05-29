@@ -18,29 +18,30 @@ table td {
 header {
     background-color: black;
     color: white;
-    height: 90px;
+    height: 60px;
     position: relative;
 }
 
 .header-logo {
     float: left;
-    font-size: 32px;
-    padding: 20px 40px;
+    font-size: 24px;
+    line-height: 30px;
+    padding: 15px 20px;
 }
 
 .header-list {
-    font-size: 18px;
+    line-height: 30px;
     position: absolute;
     right: 0;
 }
 
 .header-list ul {
     display: flex;
-    margin: 33px;
+    margin: 16px;
 }
 
 .header-list li {
-    padding: 0px 20px;
+    padding: 0px 15px;
 }
 
 .btn {
