@@ -5,6 +5,23 @@ li {
 header {
     background-color: black;
     color: white;
+    height: 90px;
+}
+
+/* ヘッダーのロゴ */
+/* 配置を左へ */
+/* フォントサイズを36px(仮)に */
+/* 余白を20px 40pxに */
+.header-logo {
+    float: left;
+}
+
+/* ヘッダーのリスト li要素のみ */
+/* 横並びに */
+/* 余白を33px 20pxに */
+.header-list li {
+    float: left;
+
 }
 
 footer span {
