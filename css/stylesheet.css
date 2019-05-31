@@ -57,6 +57,11 @@ header {
     opacity: 1.0;
 }
 
+.problems {
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
 footer {
     padding-top: 45px;
     padding-bottom: 30px;
