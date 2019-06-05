@@ -17,9 +17,9 @@ table td {
 
 header {
     background-color: black;
-    color: white;
     height: 60px;
     position: relative;
+    color: white;
 }
 
 .header-logo {
@@ -42,6 +42,14 @@ header {
 
 .header-list li {
     padding: 0px 15px;
+}
+
+.header-list a {
+    color: gray;
+}
+
+.header-list a:hover {
+    color: white;
 }
 
 .btn {
