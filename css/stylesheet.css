@@ -71,12 +71,12 @@ header {
     background-color: green;
     color: white;
     display: inline-block;
-    opacity: 0.7;
+    opacity: 0.8;
     border-radius: 4px;
 }
 
-.btn :hover {
-    opacity: 1.0;
+.btn:hover {
+    opacity: 0.6;
 }
 
 .problems {
