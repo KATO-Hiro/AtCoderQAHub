@@ -8,7 +8,12 @@ a {
 }
 
 table a {
-    color: black;
+    color: rgb(0, 100, 255);
+}
+
+table td a:hover {
+    color: rgb(0, 0, 180);
+    text-decoration: underline;
 }
 
 table td {
