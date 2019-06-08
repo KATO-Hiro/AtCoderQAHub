@@ -18,8 +18,17 @@ table td {
 header {
     background-color: black;
     height: 60px;
-    position: relative;
     color: white;
+
+    /* Pinned the header */
+    /* See:
+    https://saruwakakun.com/html-css/basic/relative-absolute-fixed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100%;
 }
 
 .header-logo {
