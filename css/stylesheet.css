@@ -84,6 +84,16 @@ header {
     padding-right: 8%;
 }
 
+.links a {
+    color: black;
+}
+
+/* FIXME: duplidate with table td a:hover */
+.links a:hover {
+    color: rgb(0, 0, 180);
+    text-decoration: underline;
+}
+
 footer {
     padding-top: 45px;
     padding-bottom: 30px;
