@@ -39,6 +39,12 @@ table td {
   text-align: center;
 }
 
+table td.problem-name {
+  text-align: left;
+  padding-left: 15px;
+}
+
+
 
 /* Header */
 
