@@ -20,78 +20,50 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc131/tasks/abc131_a" target="_blank">ABC131 A - Security</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc131/tasks/abc131_b" target="_blank">ABC131 B - Bite Eating</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc131/tasks/abc131_c" target="_blank">ABC131 C - Anti-Division</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc131/tasks/abc131_d" target="_blank">ABC131 D - Megalomania</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc131/tasks/abc131_e" target="_blank">ABC131 E - Friendships</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc131/tasks/abc131_f" target="_blank">ABC131 F - Must Be Rectangular!</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc130/tasks/abc130_a" target="_blank">ABC130 A - Rounding</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc130/tasks/abc130_b" target="_blank">ABC130 B - Bounding</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc130/tasks/abc130_c" target="_blank">ABC130 C - Rectangle Cutting</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc130/tasks/abc130_d" target="_blank">ABC130 D - Enough Array</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc130/tasks/abc130_e" target="_blank">ABC130 E - Common Subsequence</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
-                <tr>
-                  <td class="problem-name"><a href="https://atcoder.jp/contests/abc130/tasks/abc130_f" target="_blank">ABC130 F - Minimum Bounding Box</a></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="#" class="btn abc">Create</a></td>
-                </tr>
+                <%
+                  contests = {}
+                  contests[:abc131] = {type: "abc",
+                                       name: "abc131",
+                                       problems: {a: "A - Security",
+                                                  b: "B - Bite Eating",
+                                                  c: "C - Anti-Division",
+                                                  d: "D - Megalomania",
+                                                  e: "E - Friendships",
+                                                  f: "F - Must Be Rectangular!"
+                                                 }
+                                      }
+                  contests[:abc130] = {type: "abc",
+                                       name: "abc130",
+                                       problems: {a: "A - Rounding",
+                                                  b: "B - Bounding",
+                                                  c: "C - Rectangle Cutting",
+                                                  d: "D - Enough Array",
+                                                  e: "E - Common Subsequence",
+                                                  f: "F - Minimum Bounding Box"
+                                                 }
+                                      }
+                %>
+
+                <% atcoder = "https://atcoder.jp/contests/" %>
+
+                <% contests.each do |contest_name, contest_attr| %>
+                  <% contest_attr[:problems].each do |problem_id, problem_name| %>
+                    <% url = atcoder + contest_name.to_s + "/tasks/" + contest_name.to_s + "_" + problem_id.to_s %>
+
+                    <tr>
+                      <td class="problem-name">
+                        <a href=<%= url %> target="_blank"><%= contest_name.to_s.upcase + " " + problem_name %></a>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <a href="#" class="btn abc">Create</a>
+                      </td>
+                    </tr>
+
+                  <% end %>
+                <% end %>
+
                 <tr>
                   <td class="problem-name"><a href="https://atcoder.jp/contests/abc129/tasks/abc129_a" target="_blank">ABC129 A - Airplane</a></td>
                   <td></td>
