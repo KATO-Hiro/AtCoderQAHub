@@ -150,25 +150,38 @@
                                                   d: "D - Decayed Bridges"
                                                  }
                                       }
+                  # AtCoder Grand Contest
+                  contests[:agc035] = {type: "agc",
+                                       name: "agc035",
+                                       problems: {a: "A - XOR Circle",
+                                                  b: "B - Even Degrees",
+                                                  c: "C - Skolem XOR Tree",
+                                                  d: "D - Add and Remove",
+                                                  e: "E - Develop",
+                                                  f: "F - Two Histograms"
+                                                 }
+                                      }
                 %>
 
                 <% atcoder = "https://atcoder.jp/contests/" %>
 
                 <% contests.each do |contest_name, contest_attr| %>
-                  <% contest_attr[:problems].each do |problem_id, problem_name| %>
-                    <% url = atcoder + contest_name.to_s + "/tasks/" + contest_name.to_s + "_" + problem_id.to_s %>
+                  <% if contest_attr[:type] == "abc" %>
+                    <% contest_attr[:problems].each do |problem_id, problem_name| %>
+                      <% url = atcoder + contest_name.to_s + "/tasks/" + contest_name.to_s + "_" + problem_id.to_s %>
 
-                    <tr>
-                      <td class="problem-name">
-                        <a href=<%= url %> target="_blank"><%= contest_name.to_s.upcase + " " + problem_name %></a>
-                      </td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <a href="#" class="btn abc">Create</a>
-                      </td>
-                    </tr>
+                      <tr>
+                        <td class="problem-name">
+                          <a href=<%= url %> target="_blank"><%= contest_name.to_s.upcase + " " + problem_name %></a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <a href="#" class="btn abc">Create</a>
+                        </td>
+                      </tr>
 
+                    <% end %>
                   <% end %>
                 <% end %>
 
@@ -181,6 +194,43 @@
           </div>
 
           <div class="agc">
+            <h2>AtCoder Grand Contest</h2>
+            <table border="1" width="100%">
+              <col style="width:75%">
+              <col style="width:10%">
+              <col style="width:10%">
+              <col style="width:5%">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Questions</th>
+                  <th>Answers</th>
+                  <th>Room</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% contests.each do |contest_name, contest_attr| %>
+                  <% if contest_attr[:type] == "agc" %>
+                    <% contest_attr[:problems].each do |problem_id, problem_name| %>
+                      <% url = atcoder + contest_name.to_s + "/tasks/" + contest_name.to_s + "_" + problem_id.to_s %>
+
+                      <tr>
+                        <td class="problem-name">
+                          <a href=<%= url %> target="_blank"><%= contest_name.to_s.upcase + " " + problem_name %></a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <a href="#" class="btn agc">Create</a>
+                        </td>
+                      </tr>
+
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+              </tbody>
+            </table>
 
           </div>
 
