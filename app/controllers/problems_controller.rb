@@ -4,5 +4,6 @@ class ProblemsController < ApplicationController
   end
 
   def show
+    @problem = Problem.find_by(task_id: params[:task_id])
   end
 end
