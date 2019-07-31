@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   get "userpage" , to: "home#userpage"
   get "links"    , to: "home#links"
   get "login"    , to: "home#login"
+
+  get "/problems"         , to: "problems#index"
+  get "/problems/:task_id", to: "problems#show"
 end
