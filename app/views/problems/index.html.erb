@@ -1,2 +1,84 @@
-<h1>Problems#index</h1>
-<p>Find me in app/views/problems/index.html.erb</p>
+<div class="main">
+  <div class="problems-wrapper">
+    <div class="container">
+      <div class="heading">
+        <div class="problems">
+          <div class="abc">
+            <h2>AtCoder Beginner Contest</h2>
+            <table border="1" width="100%">
+              <col style="width:75%">
+              <col style="width:10%">
+              <col style="width:10%">
+              <col style="width:5%">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Questions</th>
+                  <th>Answers</th>
+                  <th>Room</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <%# TODO: 定数化 %>
+                <% atcoder = "https://atcoder.jp/contests/" %>
+
+                <%# TODO: 関数化 %>
+                <% @problems.each do |problem| %>
+
+                  <%# TODO: 正規表現を使って汎用性を持たせる %>
+                  <% if problem.contest_id == "abc135" %>
+                    <% url = atcoder + problem.contest_id + "/tasks/" + problem.task_id %>
+
+                      <tr>
+                        <td class="problem-name">
+                          <a href=<%= url %> target="_blank"><%= problem.contest_id.upcase + ": " + problem.title %></a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <a href="#" class="btn abc">Open</a>
+                        </td>
+                      </tr>
+
+                  <% end %>
+                <% end %>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="arc">
+
+          </div>
+
+          <%# <div class="agc">
+            <h2>AtCoder Grand Contest</h2>
+            <table border="1" width="100%">
+              <col style="width:75%">
+              <col style="width:10%">
+              <col style="width:10%">
+              <col style="width:5%">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Questions</th>
+                  <th>Answers</th>
+                  <th>Room</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+
+          </div> %>
+
+          <div class="other">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
