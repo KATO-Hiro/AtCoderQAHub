@@ -6,15 +6,11 @@
           <div class="abc">
             <h2>AtCoder Beginner Contest</h2>
             <table border="1" width="100%">
-              <col style="width:75%">
+              <col style="width:90%">
               <col style="width:10%">
-              <col style="width:10%">
-              <col style="width:5%">
               <thead>
                 <tr>
                   <th>Problem</th>
-                  <th>Questions</th>
-                  <th>Answers</th>
                   <th>Room</th>
                 </tr>
               </thead>
@@ -36,8 +32,6 @@
                         <td class="problem-name">
                           <a href=<%= url %> target="_blank"><%= problem.contest_id.upcase + ": " + problem.title %></a>
                         </td>
-                        <td></td>
-                        <td></td>
                         <td>
                           <a href=<%= "/problems/#{problem.task_id}" %> class="btn abc">Open ▶</a>
                         </td>
