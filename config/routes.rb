@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
+
+  get "/problems/:task_id/questions", to: "questions#index"
 end
