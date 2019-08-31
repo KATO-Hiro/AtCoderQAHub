@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get "/problems/:task_id/questions/:id"        , to: "questions#show"
   get "/problems/:task_id/questions/:id/edit"   , to: "questions#edit"
   post "/problems/:task_id/questions/:id/update", to: "questions#update"
+  post "/problems/:task_id/questions/:id/destroy", to: "questions#destroy"
 end
