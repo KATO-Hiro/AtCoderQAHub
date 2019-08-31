@@ -27,4 +27,22 @@ class QuestionsController < ApplicationController
     #   render("problems/#{@problem.task_id}/questions/new")
     end
   end
+
+  def edit
+    @question = Question.find_by(id: params[:id])
+  end
+
+  def update
+    @question = Question.find_by(id: params[:id])
+
+    @question.title = params[:title]
+    @question.content = params[:content]
+
+    if @question.save
+      flash[:notice] = "Update question title and/or content."
+      redirect_to("/problems/#{@question.task_id}")
+    # else
+    #   render("questions/edit")
+    end
+  end
 end
