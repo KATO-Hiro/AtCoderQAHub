@@ -4,11 +4,10 @@
       <div class="heading">
         <div class="questions">
           <!-- ヘッダー -->
-          <!-- task idを取得 -->
+          <% @problem = Problem.find_by(task_id: params[:task_id]) %>
+
           <!-- フォームの内容を送信 -->
-          <%# <%= form_tag("/problems/#{@problems.task_id}/questions/create") do %> %>
-          <!-- どの問題が来てもいいように抽象化を図る -->
-          <%# <%= form_tag({controller: :questions, action: :create}) do %> %>
+          <%= form_tag("/problems/#{@problem.task_id}/questions/create") do %>
 
             <p>Title</p>
             <input name="title" value="">
@@ -29,7 +28,7 @@
             <!-- http://www.htmq.com/html5/input_type_button.shtml -->
             <input type="button" value="Back" onclick="history.back()">
 
-          <%# <% end %> %>
+          <% end %>
         </div>
       </div>
     </div>

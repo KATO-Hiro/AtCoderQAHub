@@ -4,7 +4,7 @@
       <div class="heading">
         <div class="problems">
           <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
-          <a href=<%= "/problems/#{@problem.contest_id}/questions/new" %> class="btn">New Question</a>
+          <a href=<%= "/problems/#{@problem.task_id}/questions/new" %> class="btn">New Question</a>
 
           <%# FIXME: CSSで配置を調整する %>
           <br>
@@ -19,6 +19,7 @@
               <th>Questions</th>
             </tr>
 
+            <!-- TODO: 投稿順に並び替える -->
             <tbody>
               <% @questions.each do |question| %>
                 <tr>
