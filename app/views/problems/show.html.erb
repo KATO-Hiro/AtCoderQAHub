@@ -25,7 +25,12 @@
                 <tr>
                   <%# TODO: 質問にリンクを貼る %>
                   <%# TODO: 質問を左寄せする %>
-                  <td><%= question.title %></td>
+
+                  <td>
+                    <%# FIXME: idが全体としての通し番号になっているため，問題ごとに集計する %>
+                    <% url = "/problems/#{@problem.task_id}/questions/#{question.id}" %>
+                    <a href=<%= url %>><%= question.title %></a>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

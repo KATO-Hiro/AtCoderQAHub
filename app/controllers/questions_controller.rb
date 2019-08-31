@@ -2,6 +2,10 @@ class QuestionsController < ApplicationController
   def index
   end
 
+  def show
+    @question = Question.find_by(id: params[:id])
+  end
+
   def new
     @question = Question.new
   end
