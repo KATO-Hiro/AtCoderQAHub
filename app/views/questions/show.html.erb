@@ -15,7 +15,9 @@
           <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
           <%= link_to("Edit", url) %>
 
-          <%# TODO: 削除用のリンクを追加 %>
+          <%# FIXME: 編集用のリンクが見えない %>
+          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
+          <%= link_to("Delete", url, {method: "post"}) %>
 
           <%# TODO: 回答用のリンクを追加 %>
           <%# TODO: 以下に回答を表示 %>
