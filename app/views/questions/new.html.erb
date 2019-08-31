@@ -6,6 +6,8 @@
           <!-- ヘッダー -->
           <% @problem = Problem.find_by(task_id: params[:task_id]) %>
 
+          <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
+
           <!-- フォームの内容を送信 -->
           <%= form_tag("/problems/#{@problem.task_id}/questions/create") do %>
 
