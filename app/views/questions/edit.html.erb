@@ -12,6 +12,10 @@
 
           <!-- フォームの内容を送信 -->
           <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do %>
+            <!-- エラーメッセージを表示 -->
+            <% @question.errors.full_messages.each do |message| %>
+              <%= message %>
+            <% end %>
 
             <!-- TODO: 初期値を設定 -->
             <p>Title</p>

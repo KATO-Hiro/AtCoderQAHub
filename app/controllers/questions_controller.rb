@@ -41,8 +41,8 @@ class QuestionsController < ApplicationController
     if @question.save
       flash[:notice] = "Update question title and/or content."
       redirect_to("/problems/#{@question.task_id}")
-    # else
-    #   render("questions/edit")
+    else
+      render("questions/edit")
     end
   end
 
