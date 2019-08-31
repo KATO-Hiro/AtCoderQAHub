@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="questions-wrapper">
+    <div class="container">
+      <div class="heading">
+        <div class="questions">
+          <%# TODO: 質問をヘッダーとして記載 %>
+          <%# FIXME: タイトルと質問内容が見やすくなるようにする %>
+          <h2><%= @question.title %></h2>
+
+          <br>
+
+          <p><%= @question.content %></p>
+
+          <%# FIXME: 編集用のリンクが見えない %>
+          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
+          <%= link_to("Edit", url) %>
+
+          <%# FIXME: 編集用のリンクが見えない %>
+          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
+          <%= link_to("Delete", url, {method: "post"}) %>
+
+          <%# TODO: 回答用のリンクを追加 %>
+          <%# TODO: 以下に回答を表示 %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

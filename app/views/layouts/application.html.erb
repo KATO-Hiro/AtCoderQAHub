@@ -28,6 +28,10 @@
       </div>
     </header>
 
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+
     <%= yield %>
 
     <footer>

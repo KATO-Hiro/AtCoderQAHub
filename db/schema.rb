@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_102534) do
+ActiveRecord::Schema.define(version: 2019_08_30_235740) do
 
   create_table "problems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "task_id"
     t.string "contest_id"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "task_id"
+    t.string "user_id"
+    t.text "title"
+    t.text "content"
+    t.boolean "is_open"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="questions-wrapper">
+    <div class="container">
+      <div class="heading">
+        <div class="questions">
+          <!-- ヘッダー -->
+          <% @problem = Problem.find_by(task_id: params[:task_id]) %>
+
+          <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
+
+          <!-- フォームの内容を送信 -->
+          <%= form_tag("/problems/#{@problem.task_id}/questions/create") do %>
+
+            <p>Title</p>
+            <input name="title" value="">
+
+            <!-- TODO: 専用のカラムを追加する必要がある -->
+            <p>URL</p>
+            <input name="url">
+
+            <p>Descriptions</p>
+            <textarea name="content"></textarea>
+
+            <!-- FIXME: 改行はCSSで整えるべきでは? -->
+            <p></p>
+            <input type="submit" value="Submit">
+
+            <!-- 戻るを設置 -->
+            <!-- See: -->
+            <!-- http://www.htmq.com/html5/input_type_button.shtml -->
+            <input type="button" value="Back" onclick="history.back()">
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

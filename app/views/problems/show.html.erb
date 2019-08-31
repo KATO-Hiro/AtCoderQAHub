@@ -4,30 +4,33 @@
       <div class="heading">
         <div class="problems">
           <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
-          <a href="#" class="btn">New Question</a>
+          <a href=<%= "/problems/#{@problem.task_id}/questions/new" %> class="btn">New Question</a>
 
           <%# FIXME: CSSで配置を調整する %>
           <br>
           <br>
 
-          <%# TODO: 質問の一覧をDBから抽出して表示 %>
-          <%# TODO: DBから該当する問題の質問のみ抽出する %>
-          <%# TODO: そもそも，問題ごとにデータを保存すればスマートに解決できるのでは? %>
-          <% questions = ["公式解説のx分～y分の解説はどうやって思いつく?",
-                          "hoge法の実装で，fooはどんな処理をしている?",
-                          "xxxさんの解法を知りたいです．"] %>
+          <!-- HACK: erbファイルに直接モデル名を記述していいのか? -->
+          <%# DBから該当する問題の質問のみ抽出 %>
+          <% @questions = Question.where(task_id: @problem.task_id) %>
 
           <table border="1" width="100%">
             <tr>
               <th>Questions</th>
             </tr>
 
+            <!-- TODO: 投稿順に並び替える -->
             <tbody>
-              <% questions.each do |question| %>
+              <% @questions.each do |question| %>
                 <tr>
                   <%# TODO: 質問にリンクを貼る %>
                   <%# TODO: 質問を左寄せする %>
-                  <td><%= question %></td>
+
+                  <td>
+                    <%# FIXME: idが全体としての通し番号になっているため，問題ごとに集計する %>
+                    <% url = "/problems/#{@problem.task_id}/questions/#{question.id}" %>
+                    <a href=<%= url %>><%= question.title %></a>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
