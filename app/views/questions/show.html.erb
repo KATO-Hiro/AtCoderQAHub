@@ -11,11 +11,9 @@
 
           <p><%= @question.content %></p>
 
-          <%# FIXME: 編集用のリンクが見えない %>
           <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
           <%= link_to("Edit", url) %>
 
-          <%# FIXME: 編集用のリンクが見えない %>
           <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
           <%= link_to("Delete", url, {method: "post"}) %>
 
