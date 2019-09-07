@@ -29,6 +29,15 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find_by(id: params[:id])
+
+    @answer.content = params[:content]
+
+    if @answer.save
+      flash[:notice] = "Update your answer."
+      redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
+    # else
+    #   render("questions/edit")
+    end
   end
 
   def destroy
