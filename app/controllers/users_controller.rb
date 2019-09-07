@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    # DBからユーザー情報を取得
+    @users = User.all
   end
 
   def show
