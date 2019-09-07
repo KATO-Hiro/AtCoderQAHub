@@ -8,7 +8,8 @@
 
           <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
 
-          <!-- TODO: フォームからコントローラーに入力情報を送信 -->
+          <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/create") do %>
+
             <p>Descriptions</p>
             <textarea name="content"></textarea>
 
@@ -20,6 +21,7 @@
             <!-- See: -->
             <!-- http://www.htmq.com/html5/input_type_button.shtml -->
             <input type="button" value="Back" onclick="history.back()">
+          <% end %>
         </div>
       </div>
     </div>
