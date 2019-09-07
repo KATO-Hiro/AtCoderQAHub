@@ -30,8 +30,24 @@
           <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
           <%= link_to("Delete", url, {method: "post"}) %>
 
-          <%# TODO: 回答用のリンクを追加 %>
-          <%# TODO: 以下に回答を表示 %>
+
+          <%# 回答数と内容を表示 %>
+          <% @answers = Answer.where(question_id: @question.id) %>
+          <h3 class="dividing-line"><%= "#{@answers.count}" + " Answer" %></h3>
+
+          <!-- FIXME: 時刻の表示を日本時間に -->
+          <% if @answers %>
+            <% @answers.each do |answer| %>
+              <p><%= answer.content %></p>
+              <small><%= answer.updated_at %></small>
+              <p class="dividing-line"></p>
+            <% end %>
+          <% end %>
+
+          <!-- FIXME: 利便性を高めるにも，回答の入力欄を遷移せず表示させたい -->
+          <!-- 回答の入力ボタン -->
+          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new" %>
+          <%= link_to("Write Your Answer", url) %>
         </div>
       </div>
     </div>
