@@ -134,6 +134,12 @@ header {
   text-decoration: underline;
 }
 
+/* Dividing Line */
+/* See:
+http://www.htmq.com/style/border-bottom.shtml */
+.dividing-line {
+  border-bottom: solid 1px #d3d3d3;
+}
 
 /* Footer  */
 
