@@ -3,6 +3,19 @@
     <div class="container">
       <div class="heading">
         <div class="questions">
+
+          <!-- FIXME: DRYに -->
+          <% problem = Problem.find_by(task_id: params[:task_id]) %>
+
+          <% atcoder = "https://atcoder.jp/contests/" %>
+          <% url = atcoder + problem.contest_id + "/tasks/" + problem.task_id %>
+
+          <h2>
+            <a href=<%= url %> target="_blank" color="black">
+              <%= problem.contest_id.upcase + ": " + problem.title %>
+            </a>
+          </h2>
+
           <%# TODO: 質問をヘッダーとして記載 %>
           <%# FIXME: タイトルと質問内容が見やすくなるようにする %>
           <h2><%= @question.title %></h2>

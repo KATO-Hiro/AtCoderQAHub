@@ -3,7 +3,17 @@
     <div class="container">
       <div class="heading">
         <div class="problems">
-          <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
+
+          <!-- FIXME: DRY -->
+          <% atcoder = "https://atcoder.jp/contests/" %>
+          <% url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id %>
+
+          <h2>
+            <a href=<%= url %> target="_blank" color="black">
+              <%= @problem.contest_id.upcase + ": " + @problem.title %>
+            </a>
+          </h2>
+
           <a href=<%= "/problems/#{@problem.task_id}/questions/new" %> class="btn">New Question</a>
 
           <%# FIXME: CSSで配置を調整する %>
