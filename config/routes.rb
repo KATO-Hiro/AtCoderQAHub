@@ -18,5 +18,10 @@ Rails.application.routes.draw do
   post "/problems/:task_id/questions/:id/update" , to: "questions#update"
   post "/problems/:task_id/questions/:id/destroy", to: "questions#destroy"
 
-  get '/problems/:task_id/questions/:id/answers/new', to: "answers#new"
+  get '/problems/:task_id/questions/:question_id/answers'    , to: "answers#index"
+  get '/problems/:task_id/questions/:question_id/answers/new', to: "answers#new"
+  post '/problems/:task_id/questions/:question_id/answers/create', to: "answers#create"
+  get '/problems/:task_id/questions/:question_id/answers/:id/edit', to: "answers#edit"
+  post '/problems/:task_id/questions/:question_id/answers/:id/update,', to: "answers#update"
+  post '/problems/:task_id/questions/:question_id/answers/:id/destroy', to: "answers#destroy"
 end
