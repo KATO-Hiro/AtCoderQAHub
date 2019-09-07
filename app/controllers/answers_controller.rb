@@ -41,5 +41,10 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    @answer = Answer.find_by(id: params[:id])
+    @answer.destroy
+
+    flash[:notice] = "Delete the question."
+    redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
   end
 end
