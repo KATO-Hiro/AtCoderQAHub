@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # ユーザーidを取得
+    @user = User.find_by(id: params[:id])
   end
 
   def new

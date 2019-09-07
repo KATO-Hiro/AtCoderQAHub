@@ -5,10 +5,10 @@
         <div class="users">
           <h2>User list</h2>
 
-          <!-- ユーザー詳細ページへのリンクを追加 -->
+          <!-- TODO: アイコンを追加できるようにする -->
           <% @users.each do |user| %>
             <p>
-              <%= user.name %>
+              <%= link_to("#{user.name}", "/users/#{user.id}") %>
             </p>
             <p class="dividing-line">
               <%= user.created_at %>
