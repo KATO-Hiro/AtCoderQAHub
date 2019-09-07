@@ -24,9 +24,11 @@ class AnswersController < ApplicationController
   end
 
   def edit
+    @answer = Answer.find_by(id: params[:id])
   end
 
   def update
+    @answer = Answer.find_by(id: params[:id])
   end
 
   def destroy
