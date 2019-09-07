@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "links"    , to: "home#links"
   get "login"    , to: "home#login"
 
+  get '/users', to: "users#index"
+
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
 
