@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get "login"    , to: "home#login"
 
   get '/users', to: "users#index"
+  get '/signup', to: "users#new"
+  post '/users/create', to: "users#create"
+  get '/users/:id', to: "users#show"
+  get '/users/:id/edit', to: "users#edit"
+  post '/users/:id/update', to: "users#update"
+  post '/users/:id/destroy', to: "users#destroy"
 
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
