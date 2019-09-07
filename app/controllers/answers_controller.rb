@@ -3,6 +3,7 @@ class AnswersController < ApplicationController
   end
 
   def new
+    @answer = Answer.new
   end
 
   def create
