@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :ensure_correct_user, {only: [:edit, :update, :destory]}
+
   def index
   end
 
@@ -11,7 +13,8 @@ class AnswersController < ApplicationController
 
     @answer = Answer.new(
       question_id: params[:question_id],
-      content: params[:content]
+      content: params[:content],
+      user_id: @current_user.id
     )
 
     if @answer.save
