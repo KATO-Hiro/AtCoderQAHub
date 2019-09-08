@@ -27,7 +27,7 @@
             <li> <%= link_to("#{@current_user.name}", "/users/#{@current_user.id}") %> </li>
             <li> <%= link_to("Log out", "/logout", {method: "post"}) %> </li>
           <% else %>
-            <li><a href="/login" class="login">Log in</a></li>
+            <li> <%= link_to("Log in", "/login") %> </li>
             <li> <%= link_to("Sign up", "/signup") %> </li>
           <% end %>
 
