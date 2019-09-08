@@ -28,19 +28,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # ユーザーidを取得
+    @user = User.find_by(id: params[:id])
   end
 
   def update
-    # ユーザーidを取得
-    # 名前・パスワード・AtCoder IDを取得
+    @user = User.find_by(id: params[:id])
 
-    # 保存
-    ## 成功
-    ### flashを表示
-    ### ユーザー一覧を表示
-    ## 失敗
-    ### 編集画面を表示
+    @user.name = params[:name]
+    @user.password = params[:password]
+    @user.atcoder_id = params[:atcoder_id]
+
+    if @user.save
+      flash[:notice] = "Update your account information."
+      redirect_to("/users/#{@user.id}")
+    # else
+      ## 失敗
+      ### 編集画面を表示
+    #   render("questions/edit")
+    end
   end
 
   def destroy
