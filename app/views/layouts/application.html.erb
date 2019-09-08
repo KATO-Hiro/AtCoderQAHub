@@ -22,7 +22,6 @@
           <li><a href="/about" class="about">About</a></li>
           <li><a href="/guideline" class="guideline">Guideline</a></li>
           <!-- FIXME: ??????????????????? -->
-          <li><a href="/links" class="links">Links</a></li>
 
           <% if session[:user_id] %>
             <!-- ログイン状態 -->
@@ -31,6 +30,8 @@
           <% else %>
             <li><a href="/login" class="login">Log in</a></li>
           <% end %>
+
+          <li><a href="/links" class="links">Links</a></li>
 
         </ul>
       </div>
