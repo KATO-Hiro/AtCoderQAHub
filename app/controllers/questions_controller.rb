@@ -16,7 +16,8 @@ class QuestionsController < ApplicationController
     @question = Question.new(
       task_id: @problem.task_id,
       title: params[:title],
-      content: params[:content]
+      content: params[:content],
+      user_id: @current_user.id
     )
 
     if @question.save
