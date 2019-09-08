@@ -22,8 +22,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Create your account!"
       redirect_to("/users/#{@user.id}")
     else
-      ## 失敗
-      ### 新規登録画面を表示
+      render("users/new")
     end
   end
 
@@ -41,10 +40,8 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "Update your account information."
       redirect_to("/users/#{@user.id}")
-    # else
-      ## 失敗
-      ### 編集画面を表示
-    #   render("questions/edit")
+    else
+      render("users/edit")
     end
   end
 

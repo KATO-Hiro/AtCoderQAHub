@@ -5,18 +5,26 @@
         <div class="users">
           <h2>Sign Up</h2>
 
+          <!-- エラーメッセージがあれば表示 -->
+          <!-- TODO: 日本語も併記 -->
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
           <%= form_tag("/users/create") do %>
             <p>
               <label>User name:</label>
-              <input name="name">
+              <input name="name" value="<%= @user.name %>">
             </p>
             <p>
               <label>Password:</label>
-              <input type="password" name="password">
+              <input type="password" name="password" value="<%= @user.password %>">
             </p>
             <p>
               <label>AtCoder ID:</label>
-              <input name="atcoder_id">
+              <input name="atcoder_id" value="<%= @user.atcoder_id %>">
             </p>
 
             <input type="submit" value="Create Account">

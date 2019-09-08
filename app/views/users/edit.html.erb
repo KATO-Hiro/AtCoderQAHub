@@ -5,7 +5,13 @@
         <div class="users">
           <h2>Edit your account information</h2>
 
-          <% @user = User.find_by(id: params[:id]) %>
+          <!-- エラーメッセージがあれば表示 -->
+          <!-- TODO: 日本語も併記 -->
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
 
           <%= form_tag("/users/#{@user.id}/update") do %>
             <p>
