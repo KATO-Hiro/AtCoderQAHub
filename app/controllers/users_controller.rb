@@ -52,4 +52,7 @@ class UsersController < ApplicationController
     flash[:notice] = "Delete the account."
     redirect_to("/users")
   end
+
+  def login
+  end
 end
