@@ -134,6 +134,11 @@ header {
   text-decoration: underline;
 }
 
+/* Form */
+.form-error {
+  color: #ff4d75;
+}
+
 /* Dividing Line */
 /* See:
 http://www.htmq.com/style/border-bottom.shtml */
