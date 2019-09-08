@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
       redirect_to("/problems")
     end
   end
+
+  # ユーザーの編集を制限
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      flash[:notice] = ""
+      redirect_to("/users")
+    end
+  end
 end
