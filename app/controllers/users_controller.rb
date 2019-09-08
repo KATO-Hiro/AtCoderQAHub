@@ -77,4 +77,10 @@ class UsersController < ApplicationController
       render("users/login_form")
     end
   end
+
+  def logout
+    # ログイン状態を破棄
+    session[:user_id] = nil
+    redirect_to("/login")
+  end
 end

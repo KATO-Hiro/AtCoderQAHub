@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post '/users/:id/destroy', to: "users#destroy"
   get '/login'             , to: "users#login_form"
   post '/login'            , to: "users#login"
+  post '/logout'           , to: "users#logout"
 
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
