@@ -12,15 +12,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    # ユーザーidを取得
-    # 名前・パスワード・AtCoder IDを取得
+    @user = User.new(
+      name: params[:name],
+      password: params[:password],
+      atcoder_id: params[:atcoder_id]
+    )
 
-    # 保存
-    ## 成功
-    ### flashを表示
-    ### ユーザー一覧を表示
-    ## 失敗
-    ### 新規登録画面を表示
+    if @user.save
+      flash[:notice] = "Create your account!"
+      redirect_to("/users/#{@user.id}")
+    else
+      ## 失敗
+      ### 新規登録画面を表示
+    end
   end
 
   def edit

@@ -5,20 +5,22 @@
         <div class="users">
           <h2>Sign Up</h2>
 
-          <p>
-            <label>User name:</label>
-            <input name="name">
-          </p>
-          <p>
-            <label>Password:</label>
-            <input type="password" name="password">
-          </p>
-          <p>
-            <label>AtCoder ID:</label>
-            <input name="atcoder_id">
-          </p>
+          <%= form_tag("/users/create") do %>
+            <p>
+              <label>User name:</label>
+              <input name="name">
+            </p>
+            <p>
+              <label>Password:</label>
+              <input type="password" name="password">
+            </p>
+            <p>
+              <label>AtCoder ID:</label>
+              <input name="atcoder_id">
+            </p>
 
-          <input type="submit" value="Create Account">
+            <input type="submit" value="Create Account">
+          <% end %>
         </div>
       </div>
     </div>
