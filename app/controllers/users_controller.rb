@@ -57,5 +57,22 @@ class UsersController < ApplicationController
   end
 
   def login
+    # 入力された名前とパスワードからユーザーを特定
+    @user = User.find_by(
+      name: params[:name],
+      password: params[:password]
+    )
+
+    if @user
+      flash[:notice] = "Login successful!"
+      redirect_to("/problems")
+    else
+      # フォームで使えるように用意
+      @error_message = "Incorrect username or password."
+      @name = params[:name]
+      @password = params[:password]
+
+      render("users/login_form")
+    end
   end
 end
