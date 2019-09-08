@@ -50,17 +50,21 @@
           <% if @answers %>
             <% @answers.each do |answer| %>
               <p><%= answer.content %></p>
+
               <% if @current_user && @current_user.id == answer.user_id.to_i %>
                 <p>
                   Posted by:
                   <% posted_user = User.find_by(id: answer.user_id) %>
                   <%= posted_user.name %>
                 </p>
+
                 <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit" %>
                 <p><%= link_to("Edit", url) %>
+
                 <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy" %>
                 <%= link_to("Delete", url, {method: "post"}) %></p>
               <% end %>
+
               <small><%= answer.updated_at %></small>
               <p class="dividing-line"></p>
             <% end %>
