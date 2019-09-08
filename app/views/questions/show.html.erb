@@ -20,15 +20,26 @@
           <%# FIXME: タイトルと質問内容が見やすくなるようにする %>
           <h2><%= @question.title %></h2>
 
-          <br>
+          <% posted_user = @question.user %>
+
+          <p>
+            Posted by:
+            <% if posted_user %>
+              <%= posted_user.name %>
+            <% end %>
+
+            <%= @question.created_at %>
+          </p>
 
           <p><%= @question.content %></p>
 
-          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
-          <%= link_to("Edit", url) %>
+          <% if @current_user && @current_user.id == posted_user.id %>
+            <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
+            <%= link_to("Edit", url) %>
 
-          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
-          <%= link_to("Delete", url, {method: "post"}) %>
+            <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
+            <%= link_to("Delete", url, {method: "post"}) %>
+          <% end %>
 
 
           <%# 回答数と内容を表示 %>
@@ -39,10 +50,21 @@
           <% if @answers %>
             <% @answers.each do |answer| %>
               <p><%= answer.content %></p>
-              <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit" %>
-              <p><%= link_to("Edit", url) %>
-              <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy" %>
-              <%= link_to("Delete", url, {method: "post"}) %></p>
+
+              <% if @current_user && @current_user.id == answer.user_id.to_i %>
+                <p>
+                  Posted by:
+                  <% posted_user = User.find_by(id: answer.user_id) %>
+                  <%= posted_user.name %>
+                </p>
+
+                <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit" %>
+                <p><%= link_to("Edit", url) %>
+
+                <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy" %>
+                <%= link_to("Delete", url, {method: "post"}) %></p>
+              <% end %>
+
               <small><%= answer.updated_at %></small>
               <p class="dividing-line"></p>
             <% end %>
