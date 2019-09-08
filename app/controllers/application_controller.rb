@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
       redirect_to("/login")
     end
   end
+
+  # ログインユーザーがアクセスできないようにする
+  def forbid_login_user
+    if @current_user
+      flash[:notice] = "Already logged in."
+      redirect_to("/problems")
+    end
+  end
 end
