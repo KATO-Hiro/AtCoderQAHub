@@ -22,11 +22,11 @@
           <li><a href="/about" class="about">About</a></li>
           <li><a href="/guideline" class="guideline">Guideline</a></li>
           <!-- FIXME: ??????????????????? -->
-          <li><a href="/userpage" class="userpage">User page</a></li>
           <li><a href="/links" class="links">Links</a></li>
 
           <% if session[:user_id] %>
             <!-- ログイン状態 -->
+            <li><a href="/userpage" class="userpage">User page</a></li>
             <li> <%= link_to("Log out", "/logout", {method: "post"}) %> </li>
           <% else %>
             <li><a href="/login" class="login">Log in</a></li>
