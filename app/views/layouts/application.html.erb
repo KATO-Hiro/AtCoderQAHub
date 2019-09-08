@@ -21,10 +21,18 @@
           <li><a href="/" class="home">Home</a></li>
           <li><a href="/about" class="about">About</a></li>
           <li><a href="/guideline" class="guideline">Guideline</a></li>
-          <!-- FIXME: ??????????????????? -->
-          <li><a href="/userpage" class="userpage">User page</a></li>
+
+          <% if @current_user %>
+            <!-- ログイン状態 -->
+            <li> <%= link_to("#{@current_user.name}", "/users/#{@current_user.id}") %> </li>
+            <li> <%= link_to("Log out", "/logout", {method: "post"}) %> </li>
+          <% else %>
+            <li> <%= link_to("Log in", "/login") %> </li>
+            <li> <%= link_to("Sign up", "/signup") %> </li>
+          <% end %>
+
           <li><a href="/links" class="links">Links</a></li>
-          <li><a href="/login" class="login">Log in</a></li>
+
         </ul>
       </div>
     </header>

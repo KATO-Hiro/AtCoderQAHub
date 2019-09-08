@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get "guideline", to: "home#guideline"
   get "userpage" , to: "home#userpage"
   get "links"    , to: "home#links"
-  get "login"    , to: "home#login"
 
   get '/users'             , to: "users#index"
   get '/signup'            , to: "users#new"
@@ -14,6 +13,9 @@ Rails.application.routes.draw do
   get '/users/:id/edit'    , to: "users#edit"
   post '/users/:id/update' , to: "users#update"
   post '/users/:id/destroy', to: "users#destroy"
+  get '/login'             , to: "users#login_form"
+  post '/login'            , to: "users#login"
+  post '/logout'           , to: "users#logout"
 
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
