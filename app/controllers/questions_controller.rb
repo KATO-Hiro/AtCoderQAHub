@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :ensure_correct_user, {only: [:edit, :update, :destory]}
+
   def index
   end
 
