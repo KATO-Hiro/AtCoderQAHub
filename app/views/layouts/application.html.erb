@@ -24,7 +24,14 @@
           <!-- FIXME: ??????????????????? -->
           <li><a href="/userpage" class="userpage">User page</a></li>
           <li><a href="/links" class="links">Links</a></li>
-          <li><a href="/login" class="login">Log in</a></li>
+
+          <% if session[:user_id] %>
+            <!-- ログイン状態 -->
+            <li> <%= link_to("Log out", "/logout", {method: "post"}) %> </li>
+          <% else %>
+            <li><a href="/login" class="login">Log in</a></li>
+          <% end %>
+
         </ul>
       </div>
     </header>
