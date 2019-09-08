@@ -56,6 +56,7 @@
                   Posted by:
                   <% posted_user = User.find_by(id: answer.user_id) %>
                   <%= posted_user.name %>
+                  <small><%= answer.updated_at %></small>
                 </p>
 
                 <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit" %>
@@ -65,7 +66,6 @@
                 <%= link_to("Delete", url, {method: "post"}) %></p>
               <% end %>
 
-              <small><%= answer.updated_at %></small>
               <p class="dividing-line"></p>
             <% end %>
           <% end %>
