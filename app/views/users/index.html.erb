@@ -1,2 +1,22 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="main">
+  <div class="users-wrapper">
+    <div class="container">
+      <div class="heading">
+        <div class="users">
+          <h2>User list</h2>
+
+          <!-- TODO: アイコンを追加できるようにする -->
+          <% @users.each do |user| %>
+            <p>
+              <%= link_to("#{user.name}", "/users/#{user.id}") %>
+            </p>
+            <p class="dividing-line">
+              <%= "Joined: " %>
+              <%= user.created_at %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
