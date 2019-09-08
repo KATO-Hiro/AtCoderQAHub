@@ -5,7 +5,7 @@
         <div class="users">
           <h2><%= @user.name %></h2>
 
-          <% if @current_user.id == @user.id %>
+          <% if @current_user && @current_user.id == @user.id %>
             <p>
               <%= link_to("Edit", "/users/#{@user.id}/edit") %>
 
