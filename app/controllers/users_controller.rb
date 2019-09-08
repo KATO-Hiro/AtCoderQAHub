@@ -49,8 +49,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # ユーザーidを取得
-    # 削除
-    ## flashを表示
+    @User = User.find_by(id: params[:id])
+    @User.destroy
+
+    flash[:notice] = "Delete the account."
+    redirect_to("/users")
   end
 end
