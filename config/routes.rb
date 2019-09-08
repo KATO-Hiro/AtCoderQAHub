@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/users/:id/edit'    , to: "users#edit"
   post '/users/:id/update' , to: "users#update"
   post '/users/:id/destroy', to: "users#destroy"
+  get '/login'             , to: "users#login"
+  post '/login'            , to: "users#login"
 
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
