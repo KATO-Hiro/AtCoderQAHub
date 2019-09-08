@@ -4,12 +4,15 @@
       <div class="heading">
         <div class="users">
           <h2><%= @user.name %></h2>
-          <p>
-            <%= link_to("Edit", "/users/#{@user.id}/edit") %>
 
-            <!-- FIXME: 本人もしくは管理者権限がある場合のみ表示 -->
-            <%= link_to("Delete", "/users/#{@user.id}/destroy", {method: "post"}) %>
-          </p>
+          <% if @current_user.id == @user.id %>
+            <p>
+              <%= link_to("Edit", "/users/#{@user.id}/edit") %>
+
+              <!-- FIXME: 本人もしくは管理者権限がある場合のみ表示 -->
+              <%= link_to("Delete", "/users/#{@user.id}/destroy", {method: "post"}) %>
+            </p>
+          <% end %>
 
           <p>Comming soon.</p>
         </div>
