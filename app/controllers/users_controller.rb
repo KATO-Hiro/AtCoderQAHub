@@ -64,6 +64,8 @@ class UsersController < ApplicationController
     )
 
     if @user
+      # ユーザー情報をブラウザに保存
+      session[:user_id] = @user.id
       flash[:notice] = "Login successful!"
       redirect_to("/problems")
     else
