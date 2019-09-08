@@ -22,13 +22,22 @@
 
           <br>
 
+          <% posted_user = User.find_by(id: @user_id) %>
+
+          <p>
+            Posted by:
+            <%= posted_user.name %>
+          </p>
+
           <p><%= @question.content %></p>
 
-          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
-          <%= link_to("Edit", url) %>
+          <% if @current_user && @current_user.id == posted_user.id %>
+            <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
+            <%= link_to("Edit", url) %>
 
-          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
-          <%= link_to("Delete", url, {method: "post"}) %>
+            <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy" %>
+            <%= link_to("Delete", url, {method: "post"}) %>
+          <% end %>
 
 
           <%# 回答数と内容を表示 %>

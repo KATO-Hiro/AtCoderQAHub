@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(id: params[:id])
+    @user_id = @question.user.id
   end
 
   def new
