@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     )
 
     if @user.save
+      # Log in
+      session[:user_id] = @user.id
       flash[:notice] = "Create your account!"
       redirect_to("/users/#{@user.id}")
     else
