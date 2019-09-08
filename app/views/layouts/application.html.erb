@@ -22,9 +22,9 @@
           <li><a href="/about" class="about">About</a></li>
           <li><a href="/guideline" class="guideline">Guideline</a></li>
 
-          <% if session[:user_id] %>
+          <% if @current_user %>
             <!-- ログイン状態 -->
-            <li><a href="/userpage" class="userpage">User page</a></li>
+            <li> <%= link_to("#{@current_user.name}", "/users/#{@current_user.id}") %> </li>
             <li> <%= link_to("Log out", "/logout", {method: "post"}) %> </li>
           <% else %>
             <li><a href="/login" class="login">Log in</a></li>
