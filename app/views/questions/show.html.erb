@@ -22,11 +22,15 @@
 
           <br>
 
-          <% posted_user = User.find_by(id: @user_id) %>
+          <% posted_user = @question.user %>
 
           <p>
             Posted by:
-            <%= posted_user.name %>
+            <% if posted_user %>
+              <%= posted_user.name %>
+            <% end %>
+
+            <%= @question.created_at %>
           </p>
 
           <p><%= @question.content %></p>
