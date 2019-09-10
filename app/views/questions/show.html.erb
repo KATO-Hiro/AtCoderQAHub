@@ -43,8 +43,10 @@
 
 
           <%# 回答数と内容を表示 %>
-          <% @answers = Answer.where(question_id: @question.id) %>
-          <h3 class="dividing-line"><%= "#{@answers.count}" + " Answer" %></h3>
+          <%# See:
+          https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9 %>
+          <% @answers = Answer.where(question_id: @question.id).page(params[:page]).per(5) %>
+          <h3 class="dividing-line"><%= "#{@answers.total_count}" + " Answer" %></h3>
 
           <!-- FIXME: 時刻の表示を日本時間に -->
           <% if @answers %>
@@ -68,6 +70,10 @@
 
               <p class="dividing-line"></p>
             <% end %>
+
+            <%= paginate @answers %>
+            <p class="dividing-line"></p>
+
           <% end %>
 
           <!-- FIXME: 利便性を高めるにも，回答の入力欄を遷移せず表示させたい -->
