@@ -35,7 +35,9 @@ Comming soon.
 
 Paste the following commands at a Terminal prompt.
 
-  $ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
+```terminal
+$ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
+```
 
 ## Links
 
