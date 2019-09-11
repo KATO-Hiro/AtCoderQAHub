@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   get '/problems/:task_id/questions/:question_id/answers/:id/edit'    , to: "answers#edit"
   post '/problems/:task_id/questions/:question_id/answers/:id/update' , to: "answers#update"
   post '/problems/:task_id/questions/:question_id/answers/:id/destroy', to: "answers#destroy"
+  put "/problems/:task_id/questions/:question_id/answers/:id/like"  ,   to: "answers#upvote"
+  put "/problems/:task_id/questions/:question_id/answers/:id/unlike",   to: "answers#downvote"
 end
