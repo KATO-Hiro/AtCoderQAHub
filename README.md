@@ -15,6 +15,7 @@ Comming soon.
 - View AtCoder's contest problem list
 - Ask a question for problems
 - Answer these problems
+- Vote for answers (Use a gem called [Acts As Votable](https://github.com/ryanto/acts_as_votable))
 
 ## Requirement
 
@@ -34,7 +35,9 @@ Comming soon.
 
 Paste the following commands at a Terminal prompt.
 
-  $ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
+```terminal
+$ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
+```
 
 ## Links
 
