@@ -12,7 +12,7 @@
             </p>
             <p class="dividing-line">
               <%= "Joined: " %>
-              <%= user.created_at %>
+              <%= time_ago_in_words(user.created_at) + " ago" %>
             </p>
           <% end %>
         </div>
