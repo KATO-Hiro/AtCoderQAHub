@@ -50,4 +50,14 @@ class AnswersController < ApplicationController
     flash[:notice] = "Delete the question."
     redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
   end
+
+  def upvote
+    @answer = Answer.find_by(id: params[:id])
+    @answer.upvote_from @current_user
+  end
+
+  def downvote
+    @answer = Answer.find_by(id: params[:id])
+    @answer.downvote_from @current_user
+  end
 end
