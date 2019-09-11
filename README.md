@@ -39,6 +39,22 @@ Paste the following commands at a Terminal prompt.
 $ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
 ```
 
+## Getting started
+
+```terminal
+# Build Dockerfile
+$ docker-compose build
+
+# Run docker container
+$ docker-compose up -d
+
+# Run a command (ex: View rails version)
+$ docker-compose run web rails --version
+
+# Stop docker container
+$ docker-compose down
+```
+
 ## Links
 
 [AtCoder](https://atcoder.jp/)
