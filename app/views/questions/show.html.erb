@@ -33,7 +33,7 @@
             <%= time_ago_in_words(@question.created_at) + " ago" %>
           </p>
 
-          <p><%= sanitize(markdown("#{@question.content}").html_safe, tags: %w(h1 h2 h3 h4 h5 strong em a p), attributes: %w(href)) %></p>
+          <p><%= sanitize(markdown(@question.content)) %></p>
 
           <% if @current_user && @current_user.id == posted_user.id %>
             <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit" %>
