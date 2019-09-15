@@ -3,7 +3,9 @@ class User < ApplicationRecord
   validates :password, {presence: true, uniqueness: true}
   acts_as_voter
 
-  # TODO: ユーザーidから質問情報を取得できるようにする
+  def questions
+    return Question.where(user_id: self.id)
+  end
 
   # TODO: ユーザーidから回答情報を取得できるようにする
 end
