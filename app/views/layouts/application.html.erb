@@ -41,9 +41,11 @@
 
     <div class="header-padding"></div>
 
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
-    <% end %>
+    <div class="flash-style">
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+    </div>
 
     <%= yield %>
 
