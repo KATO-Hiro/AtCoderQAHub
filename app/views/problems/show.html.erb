@@ -47,7 +47,6 @@
                     <a href=<%= url %>><%= question.title %></a>
                   </td>
                   <td>
-                    <!-- 回答数を表示-->
                     <% answers = Answer.where(question_id: question.id) %>
                     <%= answers.count %>
                   </td>
