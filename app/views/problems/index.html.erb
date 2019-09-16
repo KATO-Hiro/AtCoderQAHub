@@ -6,11 +6,14 @@
           <div class="abc">
             <h2>AtCoder Beginner Contest</h2>
             <table border="1" width="100%">
-              <col style="width:90%">
+              <!-- 幅の比率を変更 -->
+              <col style="width:80%">
+              <col style="width:10%">
               <col style="width:10%">
               <thead>
                 <tr>
                   <th>Problem</th>
+                  <th>Questions</th>
                   <th>Room</th>
                 </tr>
               </thead>
@@ -31,6 +34,10 @@
                       <tr>
                         <td class="problem-name">
                           <a href=<%= url %> target="_blank"><%= problem.contest_id.upcase + ": " + problem.title %></a>
+                        </td>
+                        <td>
+                          <% questions = Question.where(task_id: problem.task_id) %>
+                          <%= questions.count %>
                         </td>
                         <td>
                           <a href=<%= "/problems/#{problem.task_id}" %> class="btn abc">Open ▶</a>
