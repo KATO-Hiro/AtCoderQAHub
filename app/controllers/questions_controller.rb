@@ -25,9 +25,11 @@ class QuestionsController < ApplicationController
     if @question.save
       flash[:notice] = "Submit a question!"
       redirect_to("/problems/#{@question.task_id}")
-    # else
-    #   # 編集画面に戻る
-    #   render("problems/#{@problem.task_id}/questions/new")
+    else
+      @title = params[:title]
+      @content = params[:content]
+
+      render("questions/new")
     end
   end
 
