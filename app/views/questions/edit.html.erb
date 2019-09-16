@@ -27,7 +27,7 @@
           <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do %>
 
             <!-- TODO: 初期値を設定 -->
-            <p>Title</p>
+            <p>Title (up to 36 characters)</p>
             <input name="title" value="<%= @question.title %>">
 
             <!-- TODO: 初期値を設定 -->
@@ -36,7 +36,7 @@
             <input name="url" value="">
 
             <!-- TODO: 初期値を設定 -->
-            <p>Descriptions</p>
+            <p>Descriptions (up to 140 characters)</p>
             <textarea name="content"><%= @question.content %></textarea>
 
             <!-- FIXME: 改行はCSSで整えるべきでは? -->

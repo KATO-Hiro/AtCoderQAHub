@@ -16,7 +16,7 @@
 
           <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/#{@answer.id}/update") do %>
 
-            <p>Descriptions</p>
+            <p>Descriptions (up to 400 characters)</p>
             <textarea name="content"><%= @answer.content %></textarea>
 
             <!-- FIXME: 改行はCSSで整えるべきでは? -->
