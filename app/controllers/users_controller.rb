@@ -64,12 +64,9 @@ class UsersController < ApplicationController
 
   def login
     # 入力された名前とパスワードからユーザーを特定
-    @user = User.find_by(
-      name: params[:name],
-      password: params[:password]
-    )
+    @user = User.find_by(name: params[:name])
 
-    if @user
+    if @user && @user.authenticate(params[:password])
       # ユーザー情報をブラウザに保存
       session[:user_id] = @user.id
       flash[:notice] = "Login successful!"
