@@ -82,9 +82,9 @@
               <% is_up = @current_user.voted_up_on? answer%>
 
               <% if is_up %>
-                <% like = fa_icon "thumbs-up", text: "Like", class: "liked" %>
+                <% like = fa_icon "thumbs-up", class: "liked" %>
               <% else %>
-                <% like = fa_icon "thumbs-up", text: "Like", class: "not-voted" %>
+                <% like = fa_icon "thumbs-up", class: "not-voted" %>
               <% end %>
 
               <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like" %>
@@ -95,9 +95,9 @@
               <% is_down = @current_user.voted_down_on? answer %>
 
               <% if is_down %>
-                <% unlike = fa_icon "thumbs-down", text: "Unlike", class: "unliked" %>
+                <% unlike = fa_icon "thumbs-down", class: "unliked" %>
               <% else %>
-                <% unlike = fa_icon "thumbs-down", text: "Unlike", class: "not-voted" %>
+                <% unlike = fa_icon "thumbs-down", class: "not-voted" %>
               <% end %>
 
               <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike" %>
