@@ -25,9 +25,14 @@
           <% @questions = Question.where(task_id: @problem.task_id) %>
 
           <table border="1" width="100%">
-            <tr>
-              <th><%= @questions.count %> Questions</th>
-            </tr>
+            <col style="width:90%">
+            <col style="width:10%">
+            <thead>
+              <tr>
+                <th><%= @questions.count %> Questions</th>
+                <th>Answers</th>
+              </tr>
+            <thead>
 
             <!-- TODO: 投稿順に並び替える -->
             <tbody>
@@ -40,6 +45,11 @@
                     <%# FIXME: idが全体としての通し番号になっているため，問題ごとに集計する %>
                     <% url = "/problems/#{@problem.task_id}/questions/#{question.id}" %>
                     <a href=<%= url %>><%= question.title %></a>
+                  </td>
+                  <td>
+                    <!-- 回答数を表示-->
+                    <% answers = Answer.where(question_id: question.id) %>
+                    <%= answers.count %>
                   </td>
                 </tr>
               <% end %>
