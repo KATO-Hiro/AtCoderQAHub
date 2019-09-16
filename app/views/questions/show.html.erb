@@ -79,13 +79,13 @@
               <% end %>
 
               <%# Vote %>
-              <% like = fa_icon "s thumbs-up" %>
+              <% like = fa_icon "fas thumbs-up", text: "Like" %>
               <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like" %>
               <%= link_to(like, url, {method: "put"}) %>
 
               <%= answer.get_upvotes.size %>
 
-              <% unlike = fa_icon "s thumbs-down" %>
+              <% unlike = fa_icon "fas thumbs-down", text: "Unlike" %>
               <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike" %>
               <%= link_to(unlike, url, {method: "put"}) %>
 
