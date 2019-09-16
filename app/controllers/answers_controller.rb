@@ -20,9 +20,10 @@ class AnswersController < ApplicationController
     if @answer.save
       flash[:notice] = "Submit your answer!"
       redirect_to("/problems/#{task_id}/questions/#{@answer.question_id}")
-    # else
-      # 回答ページを表示
-      # render("")
+    else
+      @content = params[:content]
+
+      render("answers/new")
     end
   end
 
@@ -38,8 +39,8 @@ class AnswersController < ApplicationController
     if @answer.save
       flash[:notice] = "Update your answer."
       redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
-    # else
-    #   render("questions/edit")
+    else
+      render("answers/edit")
     end
   end
 
