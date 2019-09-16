@@ -18,14 +18,14 @@
           <!-- フォームの内容を送信 -->
           <%= form_tag("/problems/#{@problem.task_id}/questions/create") do %>
 
-            <p>Title</p>
+            <p>Title (up to 36 characters)</p>
             <input name="title" value="<%= @title %>">
 
             <!-- TODO: 専用のカラムを追加する必要がある -->
             <p>URL</p>
             <input name="url">
 
-            <p>Descriptions</p>
+            <p>Descriptions (up to 140 characters)</p>
             <textarea name="content"><%= @content %></textarea>
 
             <!-- FIXME: 改行はCSSで整えるべきでは? -->
