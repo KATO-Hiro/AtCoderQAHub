@@ -51,6 +51,16 @@ class AnswersController < ApplicationController
     redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
   end
 
+  def ensure_correct_user
+    @answer = Answer.find_by(id: params[:id])
+    @user = @answer.user
+
+    if @current_user.id != @user.id
+      flash[:notice] = "No permissions."
+      redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
+    end
+  end
+
   def upvote
     @answer = Answer.find_by(id: params[:id])
     @answer.upvote_from @current_user
