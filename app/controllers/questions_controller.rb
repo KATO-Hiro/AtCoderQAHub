@@ -56,4 +56,14 @@ class QuestionsController < ApplicationController
     flash[:notice] = "Delete the question."
     redirect_to("/problems/#{@question.task_id}")
   end
+
+  def ensure_correct_user
+    @question = Question.find_by(id: params[:id])
+    @user = @question.user
+
+    if @current_user.id != @user.id
+      flash[:notice] = "No permissions."
+      redirect_to("/problems/#{@question.task_id}")
+    end
+  end
 end
