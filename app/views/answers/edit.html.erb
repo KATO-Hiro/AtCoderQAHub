@@ -5,9 +5,14 @@
         <div class="answers">
           <% @problem = Problem.find_by(task_id: params[:task_id]) %>
           <% @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0] %>
-          <% @answer = Answer.find_by(id: params[:id]) %>
 
           <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
+
+          <% @answer.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
 
           <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/#{@answer.id}/update") do %>
 

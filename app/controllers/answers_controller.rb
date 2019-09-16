@@ -39,8 +39,8 @@ class AnswersController < ApplicationController
     if @answer.save
       flash[:notice] = "Update your answer."
       redirect_to("/problems/#{params[:task_id]}/questions/#{@answer.question_id}")
-    # else
-    #   render("questions/edit")
+    else
+      render("answers/edit")
     end
   end
 
