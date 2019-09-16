@@ -97,8 +97,14 @@ header {
   color: white;
 }
 
+/* See:
+https://www.webnoiroha.net/webdesign/css/sticky-header/ */
+.header-padding {
+  padding: 30px 0;
+}
+
 .main {
-  padding-top: 60px;
+  padding-top: 1px;
 }
 
 /* Problem list */
