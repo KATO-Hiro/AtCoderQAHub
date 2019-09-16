@@ -8,10 +8,16 @@
 
           <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
 
+          <% @answer.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
           <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/create") do %>
 
             <p>Descriptions</p>
-            <textarea name="content"></textarea>
+            <textarea name="content"><%= @content %></textarea>
 
             <!-- FIXME: 改行はCSSで整えるべきでは? -->
             <p></p>

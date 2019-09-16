@@ -1,4 +1,5 @@
 class Answer < ApplicationRecord
+  validates :content, {presence: true, length: {maximum: 400}}
   acts_as_votable
 
   def user
