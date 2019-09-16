@@ -8,6 +8,13 @@
 
           <h2><%= @problem.contest_id.upcase + ": " + @problem.title %></h2>
 
+          <!-- 入力エラーがあったときは，メッセージを表示 -->
+          <% @question.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
           <!-- フォームの内容を送信 -->
           <%= form_tag("/problems/#{@problem.task_id}/questions/create") do %>
 

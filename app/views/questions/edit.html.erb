@@ -6,7 +6,6 @@
           <!-- FIXME: newアクション用のビューとほぼ重複しているため，共通部分をリファクタリングする -->
           <!-- ヘッダー -->
           <% @problem = Problem.find_by(task_id: params[:task_id]) %>
-          <% @question = Question.find_by(id: params[:id]) %>
 
           <!-- TODO: DRYに -->
           <% atcoder = "https://atcoder.jp/contests/" %>
@@ -18,12 +17,14 @@
             </a>
           </h2>
 
-          <!-- フォームの内容を送信 -->
-          <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do %>
-            <!-- エラーメッセージを表示 -->
+          <div class="form-error">
             <% @question.errors.full_messages.each do |message| %>
               <%= message %>
             <% end %>
+          </div>
+
+          <!-- フォームの内容を送信 -->
+          <%= form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do %>
 
             <!-- TODO: 初期値を設定 -->
             <p>Title</p>
