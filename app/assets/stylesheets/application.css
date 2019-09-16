@@ -137,6 +137,19 @@ https://www.webnoiroha.net/webdesign/css/sticky-header/ */
 }
 
 
+/* Vote */
+.not-voted {
+  color: gray;
+}
+
+.liked {
+  color: red;
+}
+
+.unliked {
+  color: blue;
+}
+
 /* Links */
 
 .links a {
