@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 
@@ -135,6 +136,19 @@ https://www.webnoiroha.net/webdesign/css/sticky-header/ */
   padding-right: 8%;
 }
 
+
+/* Vote */
+.not-voted {
+  color: gray;
+}
+
+.liked {
+  color: red;
+}
+
+.unliked {
+  color: blue;
+}
 
 /* Links */
 

@@ -61,16 +61,6 @@
           <!-- FIXME: 時刻の表示を日本時間に -->
           <% if @answers %>
             <% @answers.each do |answer| %>
-              <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like" %>
-              <%= link_to("Like", url, {method: "put"}) %>
-
-              <%= answer.get_upvotes.size %>
-
-              <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike" %>
-              <%= link_to("Unlike", url, {method: "put"}) %>
-
-              <%= answer.get_downvotes.size %>
-
               <p><%= answer.content %></p>
 
               <p>
@@ -88,6 +78,34 @@
                 </p>
               <% end %>
 
+              <%# Vote %>
+              <% is_up = @current_user.voted_up_on? answer%>
+
+              <% if is_up %>
+                <% like = fa_icon "thumbs-up", class: "liked" %>
+              <% else %>
+                <% like = fa_icon "thumbs-up", class: "not-voted" %>
+              <% end %>
+
+              <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like" %>
+              <%= link_to(like, url, {method: "put"}) %>
+
+              <%= answer.get_upvotes.size %>
+
+              <% is_down = @current_user.voted_down_on? answer %>
+
+              <% if is_down %>
+                <% unlike = fa_icon "thumbs-down", class: "unliked" %>
+              <% else %>
+                <% unlike = fa_icon "thumbs-down", class: "not-voted" %>
+              <% end %>
+
+              <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike" %>
+              <%= link_to(unlike, url, {method: "put"}) %>
+
+              <%= answer.get_downvotes.size %>
+
+              <%# Edit and Delete link %>
               <% if @current_user && @current_user.id == answer.user_id.to_i %>
                 <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit" %>
                 <p><%= link_to("Edit", url) %>
