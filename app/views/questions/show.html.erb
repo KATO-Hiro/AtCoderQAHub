@@ -33,6 +33,14 @@
             <%= time_ago_in_words(@question.created_at) + " ago" %>
           </p>
 
+          <% if @question.created_at != @question.updated_at %>
+            <p>
+              Updated:
+
+              <%= time_ago_in_words(@question.updated_at) + " ago" %>
+            </p>
+          <% end %>
+
           <p><%= sanitize(markdown(@question.content)) %></p>
 
           <% if @current_user && @current_user.id == posted_user.id %>
@@ -69,8 +77,16 @@
                 Posted by:
                 <% posted_user = User.find_by(id: answer.user_id) %>
                 <%= posted_user.name %>
-                <small><%= time_ago_in_words(answer.updated_at) + " ago" %></small>
+                <small><%= time_ago_in_words(answer.created_at) + " ago" %></small>
               </p>
+
+              <% if answer.created_at != answer.updated_at %>
+                <p>
+                  Updated:
+
+                  <small><%= time_ago_in_words(answer.updated_at) + " ago" %></small>
+                </p>
+              <% end %>
 
               <% if @current_user && @current_user.id == answer.user_id.to_i %>
                 <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit" %>
