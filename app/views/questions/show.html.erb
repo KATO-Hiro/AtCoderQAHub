@@ -61,13 +61,15 @@
           <!-- FIXME: 時刻の表示を日本時間に -->
           <% if @answers %>
             <% @answers.each do |answer| %>
+              <% like = fa_icon "s thumbs-up" %>
               <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like" %>
-              <%= link_to("Like", url, {method: "put"}) %>
+              <%= link_to(like, url, {method: "put"}) %>
 
               <%= answer.get_upvotes.size %>
 
+              <% unlike = fa_icon "s thumbs-down" %>
               <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike" %>
-              <%= link_to("Unlike", url, {method: "put"}) %>
+              <%= link_to(unlike, url, {method: "put"}) %>
 
               <%= answer.get_downvotes.size %>
 
