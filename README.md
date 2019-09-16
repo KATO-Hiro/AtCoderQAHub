@@ -4,7 +4,7 @@ Represents a mockup for Q&amp;A board for AtCoder users.
 
 ## Description
 
-It is an unoffical bulletin board of [AtCoder](https://atcoder.jp/). Contestants can easily ask questions ans answers.
+It is an unoffical bulletin board of [AtCoder](https://atcoder.jp/). Contestants can easily ask questions and answers.
 
 *** DEMO ***
 
