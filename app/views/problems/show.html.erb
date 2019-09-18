@@ -14,7 +14,10 @@
             </a>
           </h2>
 
-          <a href=<%= "/problems/#{@problem.task_id}/questions/new" %> class="btn">New Question</a>
+          <%# ログイン状態のときだけ質問の投稿を許可する %>
+          <% if @current_user %>
+            <a href=<%= "/problems/#{@problem.task_id}/questions/new" %> class="btn">New Question</a>
+          <% end %>
 
           <%# FIXME: CSSで配置を調整する %>
           <br>
