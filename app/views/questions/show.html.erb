@@ -79,7 +79,7 @@
               <% end %>
 
               <%# Vote %>
-              <% is_up = @current_user.voted_up_on? answer%>
+              <% is_up = @current_user && (@current_user.voted_up_on? answer) %>
 
               <% if is_up %>
                 <% like = fa_icon "thumbs-up", class: "liked" %>
@@ -92,7 +92,7 @@
 
               <%= answer.get_upvotes.size %>
 
-              <% is_down = @current_user.voted_down_on? answer %>
+              <% is_down = @current_user && (@current_user.voted_down_on? answer) %>
 
               <% if is_down %>
                 <% unlike = fa_icon "thumbs-down", class: "unliked" %>
@@ -124,8 +124,11 @@
 
           <!-- FIXME: 利便性を高めるにも，回答の入力欄を遷移せず表示させたい -->
           <!-- 回答の入力ボタン -->
-          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new" %>
-          <%= link_to("Write Your Answer", url) %>
+          <!-- ログインユーザーのみ表示 -->
+          <% if @current_user %>
+            <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new" %>
+            <%= link_to("Write Your Answer", url) %>
+          <% end %>
         </div>
       </div>
     </div>

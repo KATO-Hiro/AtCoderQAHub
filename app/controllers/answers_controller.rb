@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update, :destory]}
+  before_action :authenticate_user, {only: [:upvote, :downvote]}
 
   def index
   end
