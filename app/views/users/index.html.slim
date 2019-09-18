@@ -5,9 +5,11 @@
         .users
           h2
             | User list
+
           - @users.each do |user|
             p
               = link_to("#{user.name}", "/users/#{user.id}")
+
             p.dividing-line
               = "Joined: "
               = time_ago_in_words(user.created_at) + " ago"
