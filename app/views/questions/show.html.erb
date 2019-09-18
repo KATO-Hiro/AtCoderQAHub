@@ -124,8 +124,11 @@
 
           <!-- FIXME: 利便性を高めるにも，回答の入力欄を遷移せず表示させたい -->
           <!-- 回答の入力ボタン -->
-          <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new" %>
-          <%= link_to("Write Your Answer", url) %>
+          <!-- ログインユーザーのみ表示 -->
+          <% if @current_user %>
+            <% url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new" %>
+            <%= link_to("Write Your Answer", url) %>
+          <% end %>
         </div>
       </div>
     </div>
