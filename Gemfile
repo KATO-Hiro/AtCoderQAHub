@@ -51,6 +51,11 @@ gem 'coderay'
 # The font-awesome font bundled as an asset for the rails asset pipeline
 gem 'font-awesome-rails'
 
+# Slim is a template language whose goal is to reduce the syntax to the essential parts without becoming cryptic.
+gem 'slim'
+# convert html files to slim
+gem 'html2slim'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
