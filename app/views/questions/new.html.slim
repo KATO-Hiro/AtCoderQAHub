@@ -15,9 +15,7 @@
           = form_tag("/problems/#{@problem.task_id}/questions/create") do
             p
               | Title (up to 36 characters)
-            |  <input name="title" value="
-            = @title
-            | ">
+            input[name="title" value="#{@title}"]
 
             p
               | URL
@@ -25,7 +23,6 @@
 
             p
               | Descriptions (up to 140 characters)
-
             textarea[name="content"]
               = @content
 
