@@ -9,11 +9,13 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     link[rel="stylesheet" href="app/assets/stylesheets/home.css"]
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
     header
       .header-logo
         a[href="/"]
           | AtCoder QAHub
+
       .header-list
         ul
           li
@@ -29,6 +31,7 @@ html
           li
             a.guideline[href="/guideline"]
               | Guideline
+
           - if @current_user
             li
               = link_to("#{@current_user.name}", "/users/#{@current_user.id}")
@@ -42,11 +45,15 @@ html
           li
             a.links[href="/links"]
               | Links
+
     .header-padding
+
     .flash-style
       - if flash[:notice]
         = flash[:notice]
-    = yield
+
+    == yield
+
     footer
       span
         | Copyright © 2019 hiro_hiro, All Rights Reserved.
