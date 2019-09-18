@@ -8,10 +8,7 @@
           - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
           h2
-            |  <a href=
-            = url
-            |  target="_blank" color="black">
-            = problem.contest_id.upcase + ": " + problem.title
+            = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
 
           - # TODO: 質問をヘッダーとして記載
           - # FIXME: タイトルと質問内容が見やすくなるようにする
@@ -19,10 +16,12 @@
             = @question.title
 
           - posted_user = @question.user
+
           p
             |  Posted by:
             - if posted_user
               = posted_user.name
+
             / See:
               https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
             = time_ago_in_words(@question.created_at) + " ago"
@@ -31,6 +30,7 @@
             p
               |  Updated:
               = time_ago_in_words(@question.updated_at) + " ago"
+
           p
             = sanitize(markdown(@question.content))
 
