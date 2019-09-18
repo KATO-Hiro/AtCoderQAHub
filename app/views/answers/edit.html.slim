@@ -1,0 +1,20 @@
+.main
+  .answers-wrapper
+    .container
+      .heading
+        .answers
+          - @problem = Problem.find_by(task_id: params[:task_id])
+          - @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0]
+          h2
+            = @problem.contest_id.upcase + ": " + @problem.title
+          - @answer.errors.full_messages.each do |message|
+            .form-error
+              = message
+          = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/#{@answer.id}/update") do
+            p
+              | Descriptions (up to 400 characters)
+            textarea[name="content"]
+              = @answer.content
+            p
+            input[type="submit" value="Update"]
+            input[type="button" value="Back" onclick="history.back()"]

@@ -1,0 +1,54 @@
+.main
+  .problems-wrapper
+    .container
+      .heading
+        .problems
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
+          h2
+            |  <a href=
+            = url
+            |  target="_blank" color="black"> 
+            = @problem.contest_id.upcase + ": " + @problem.title
+          - # ログイン状態のときだけ質問の投稿を許可する
+          - if @current_user
+            |  <a href=
+            = "/problems/#{@problem.task_id}/questions/new"
+            |  class="btn">New Question
+          - # FIXME: CSSで配置を調整する
+          br
+          br
+          - # DBから該当する問題の質問のみ抽出
+          - @questions = Question.where(task_id: @problem.task_id)
+          table[border="1" width="100%"]
+            col[style="width:90%"]
+            col[style="width:10%"]
+            thead
+              tr
+                th
+                  = @questions.count
+                  |  Questions
+                th
+                  | Answers
+            thead
+
+            tbody
+              - @questions.each do |question|
+                tr
+                  - # TODO: 質問にリンクを貼る
+                  - # TODO: 質問を左寄せする
+                  td
+                    - # FIXME: idが全体としての通し番号になっているため，問題ごとに集計する
+                    - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
+                    |  <a href=
+                    = url
+                    | >
+                    = question.title
+                  td
+                    - answers = Answer.where(question_id: question.id)
+                    = answers.count
+          br
+          - # TODO: 入力フォームを用意
+          |  <a href=
+          = "/problems/"
+          |  class="btn">◀ Return to list

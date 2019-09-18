@@ -1,0 +1,30 @@
+.main
+  .users-wrapper
+    .container
+      .heading
+        .users
+          h2
+            | Sign Up
+          - @user.errors.full_messages.each do |message|
+            .form-error
+              = message
+          = form_tag("/users/create") do
+            p
+              label
+                | User name:
+              |  <input name="name" value="
+              = @user.name
+              | "> 
+            p
+              label
+                | Password:
+              |  <input type="password" name="password" value="
+              = @user.password
+              | "> 
+            p
+              label
+                | AtCoder ID:
+              |  <input name="atcoder_id" value="
+              = @user.atcoder_id
+              | "> 
+            input[type="submit" value="Create Account"]

@@ -1,0 +1,32 @@
+.main
+  .questions-wrapper
+    .container
+      .heading
+        .questions
+          - @problem = Problem.find_by(task_id: params[:task_id])
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
+          h2
+            |  <a href=
+            = url
+            |  target="_blank" color="black"> 
+            = @problem.contest_id.upcase + ": " + @problem.title
+          .form-error
+            - @question.errors.full_messages.each do |message|
+              = message
+          = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do
+            p
+              | Title (up to 36 characters)
+            |  <input name="title" value="
+            = @question.title
+            | "> 
+            p
+              | URL
+            input[name="url" value=""]
+            p
+              | Descriptions (up to 140 characters)
+            textarea[name="content"]
+              = @question.content
+            p
+            input[type="submit" value="Update"]
+            input[type="button" value="Back" onclick="history.back()"]

@@ -1,0 +1,24 @@
+.main
+  .users-wrapper
+    .container
+      .heading
+        .users
+          h2
+            | Log in
+          - if @error_message
+            .form-error
+              = @error_message
+          = form_tag("/login") do
+            p
+              label
+                | User name:
+              |  <input name="name" value="
+              = @name
+              | "> 
+            p
+              label
+                | Password:
+              |  <input type="password" name="password" value="
+              = @password
+              | "> 
+            input[type="submit" value="Log in"]
