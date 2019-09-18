@@ -17,7 +17,7 @@
           br
           br
 
-          - # DBから該当する問題の質問のみ抽出
+          / DBから該当する問題の質問のみ抽出
           - @questions = Question.where(task_id: @problem.task_id)
 
           table[border="1" width="100%"]
@@ -30,7 +30,6 @@
                   |  Questions
                 th
                   | Answers
-            thead
 
             tbody
               - @questions.each do |question|
