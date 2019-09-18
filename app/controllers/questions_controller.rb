@@ -63,7 +63,7 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(id: params[:id])
     @user = @question.user
 
-    if @current_user.id != @user.id
+    if @current_user == nil || @current_user.id != @user.id
       flash[:notice] = "No permissions."
       redirect_to("/problems/#{@question.task_id}")
     end
