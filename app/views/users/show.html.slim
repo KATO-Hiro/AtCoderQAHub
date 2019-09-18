@@ -1,0 +1,15 @@
+.main
+  .users-wrapper
+    .container
+      .heading
+        .users
+          h2
+            = @user.name
+
+          - if @current_user && @current_user.id == @user.id
+            p
+              = link_to("Edit", "/users/#{@user.id}/edit")
+              = link_to("Delete", "/users/#{@user.id}/destroy", {method: "post"})
+
+          p
+            | Comming soon.

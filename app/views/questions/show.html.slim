@@ -1,0 +1,109 @@
+.main
+  .questions-wrapper
+    .container
+      .heading
+        .questions
+          - problem = Problem.find_by(task_id: params[:task_id])
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
+
+          h2
+            = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
+
+          - # TODO: 質問をヘッダーとして記載
+          - # FIXME: タイトルと質問内容が見やすくなるようにする
+          h2
+            = @question.title
+
+          - posted_user = @question.user
+
+          p
+            |  Posted by:
+            - if posted_user
+              = posted_user.name
+
+            / See:
+              https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
+            = time_ago_in_words(@question.created_at) + " ago"
+
+          - if @question.created_at != @question.updated_at
+            p
+              |  Updated:
+              = time_ago_in_words(@question.updated_at) + " ago"
+
+          p
+            = sanitize(markdown(@question.content))
+
+          - if @current_user && @current_user.id == posted_user.id
+            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
+            = link_to("Edit", url)
+
+            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
+            = link_to("Delete", url, {method: "post"})
+
+          / 回答数と内容を表示
+            See:
+            https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9
+          - @answers = Answer.where(question_id: @question.id).page(params[:page]).per(5)
+
+          h3.dividing-line
+            = "#{@answers.total_count}" + " Answer"
+
+          - if @answers
+            - @answers.each do |answer|
+              p
+                = answer.content
+
+              p
+                |  Posted by:
+                - posted_user = User.find_by(id: answer.user_id)
+                = posted_user.name
+                small
+                  = time_ago_in_words(answer.created_at) + " ago"
+
+              - if answer.created_at != answer.updated_at
+                p
+                  |  Updated:
+                  small
+                    = time_ago_in_words(answer.updated_at) + " ago"
+
+              / Vote
+              - is_up = @current_user && (@current_user.voted_up_on? answer)
+
+              - if is_up
+                - like = fa_icon "thumbs-up", class: "liked"
+              - else
+                - like = fa_icon "thumbs-up", class: "not-voted"
+
+              - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
+              = link_to(like, url, {method: "put"})
+
+              = answer.get_upvotes.size
+
+              - is_down = @current_user && (@current_user.voted_down_on? answer)
+
+              - if is_down
+                - unlike = fa_icon "thumbs-down", class: "unliked"
+              - else
+                - unlike = fa_icon "thumbs-down", class: "not-voted"
+
+              - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
+              = link_to(unlike, url, {method: "put"})
+
+              = answer.get_downvotes.size
+
+              - # Edit and Delete link
+              - if @current_user && @current_user.id == answer.user_id.to_i
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
+                p
+                  = link_to("Edit", url)
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
+                  = link_to("Delete", url, {method: "post"})
+
+            p.dividing-line
+            = paginate @answers
+            p.dividing-line
+
+          - if @current_user
+            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new"
+            = link_to("Write Your Answer", url)
