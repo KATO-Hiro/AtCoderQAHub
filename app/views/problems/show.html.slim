@@ -11,7 +11,7 @@
 
           / ログイン状態のときだけ質問の投稿を許可する
           - if @current_user
-            = link_to("New Question", "/problems/#{@problem.task_id}/questions/new}", class: "btn")
+            = link_to("New Question", "/problems/#{@problem.task_id}/questions/new", class: "btn")
 
           / FIXME: CSSで配置を調整する
           br
