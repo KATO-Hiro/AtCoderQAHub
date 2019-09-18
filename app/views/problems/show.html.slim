@@ -7,16 +7,12 @@
           - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
 
           h2
-            |  <a href=
-            = url
-            |  target="_blank" color="black">
-            = @problem.contest_id.upcase + ": " + @problem.title
+            = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank")
 
           / ログイン状態のときだけ質問の投稿を許可する
           - if @current_user
-            |  <a href=
-            = "/problems/#{@problem.task_id}/questions/new"
-            |  class="btn">New Question
+            = link_to("New Question", "/problems/#{@problem.task_id}/questions/new}", class: "btn")
+
           / FIXME: CSSで配置を調整する
           br
           br
@@ -43,17 +39,13 @@
                   td
                     / FIXME: idが全体としての通し番号になっているため，問題ごとに集計する
                     - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
-                    |  <a href=
-                    = url
-                    | >
-                    = question.title
+                    = link_to("#{question.title}", "#{url}")
+
                   td
                     - answers = Answer.where(question_id: question.id)
                     = answers.count
           br
 
           / TODO: 入力フォームを用意
-          |  <a href=
-          = "/problems/"
-          |  class="btn">
-          | ◀ Return to list
+
+          = link_to("◀ Return to list", "/problems/", class: "btn")
