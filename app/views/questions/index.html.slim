@@ -6,7 +6,6 @@
           h2
             | Questions
 
-          / TODO: 1ページあたり50～100件表示
           table[border="1" width="100%"]
               col[style="width:60%"]
               col[style="width:20%"]
@@ -29,3 +28,6 @@
                       = question.user.name
                     td
                       = time_ago_in_words(question.created_at) + " ago"
+
+          p.dividing-line
+          = paginate @questions
