@@ -72,13 +72,17 @@
 
               - if is_up
                 - like = fa_icon "thumbs-up", class: "liked"
+
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_like"
+                = link_to(like, url, {method: "put"})
               - else
                 - like = fa_icon "thumbs-up", class: "not-voted"
 
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
+                = link_to(like, url, {method: "put"})
+
               / FIXME: ログインユーザーの投票状況にかかわらず，Likeを選択している
               / 以下のリンクは，likeを押した&投票していないときだけ
-              - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
-              = link_to(like, url, {method: "put"})
 
               / likeを既に押した状態の処理
               / FIXME: 投票を取り消す
