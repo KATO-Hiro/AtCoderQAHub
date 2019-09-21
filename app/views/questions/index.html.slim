@@ -5,3 +5,16 @@
         .questions
           h2
             | Questions
+
+          table[border="1" width="100%"]
+              col[style="width:80%"]
+              thead
+                tr
+                  th
+                    | Content
+              tbody
+                - @questions.each do |question|
+
+                  tr
+                    td
+                      = question.content
