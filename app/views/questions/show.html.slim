@@ -75,8 +75,13 @@
               - else
                 - like = fa_icon "thumbs-up", class: "not-voted"
 
+              / FIXME: ログインユーザーの投票状況にかかわらず，Likeを選択している
+              / 以下のリンクは，likeを押した&投票していないときだけ
               - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
               = link_to(like, url, {method: "put"})
+
+              / likeを既に押した状態の処理
+              / FIXME: 投票を取り消す
 
               = answer.get_upvotes.size
 
@@ -87,8 +92,13 @@
               - else
                 - unlike = fa_icon "thumbs-down", class: "not-voted"
 
+              / FIXME: ログインユーザーの投票状況にかかわらず，Unlikeを選択している
+              / 以下のリンクは，unlikeを押した&投票していないときだけ
               - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
               = link_to(unlike, url, {method: "put"})
+
+              / unlikeを既に押した状態の処理
+              / FIXME: 投票を取り消す
 
               = answer.get_downvotes.size
 
