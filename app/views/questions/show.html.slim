@@ -72,10 +72,11 @@
 
               - if is_up
                 - like = fa_icon "thumbs-up", class: "liked"
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_like"
               - else
                 - like = fa_icon "thumbs-up", class: "not-voted"
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
 
-              - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
               = link_to(like, url, {method: "put"})
 
               = answer.get_upvotes.size
@@ -84,10 +85,11 @@
 
               - if is_down
                 - unlike = fa_icon "thumbs-down", class: "unliked"
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_unlike"
               - else
                 - unlike = fa_icon "thumbs-down", class: "not-voted"
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
 
-              - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
               = link_to(unlike, url, {method: "put"})
 
               = answer.get_downvotes.size

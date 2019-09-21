@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   post "/problems/:task_id/questions/:question_id/answers/:id/destroy", to: "answers#destroy"
   put "/problems/:task_id/questions/:question_id/answers/:id/like"  ,   to: "answers#upvote"
   put "/problems/:task_id/questions/:question_id/answers/:id/unlike",   to: "answers#downvote"
+  put "/problems/:task_id/questions/:question_id/answers/:id/cancel_like"  ,   to: "answers#cancel_upvote"
+  put "/problems/:task_id/questions/:question_id/answers/:id/cancel_unlike"  ,   to: "answers#cancel_downvote"
 end
