@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update, :destory]}
 
   def index
+    @questions = Question.all.order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def show

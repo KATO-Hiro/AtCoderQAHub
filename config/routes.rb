@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "/problems"         , to: "problems#index"
   get "/problems/:task_id", to: "problems#show"
 
-  get "/problems/:task_id/questions"             , to: "questions#index"
+  get "/questions"                               , to: "questions#index"
   get "/problems/:task_id/questions/new"         , to: "questions#new"
   post "/problems/:task_id/questions/create"     , to: "questions#create"
   get "/problems/:task_id/questions/:id"         , to: "questions#show"
