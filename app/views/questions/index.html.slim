@@ -24,7 +24,7 @@
 
                   tr
                     td
-                      = question.content
+                      = link_to(question.title, "/problems/#{question.task_id}/questions/#{question.id}")
                     td
                       = link_to(question.user.name, "/users/#{question.user.id}")
                     td
