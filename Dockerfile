@@ -1,7 +1,11 @@
 FROM ruby:2.6.3
 
 # Run updates
-RUN apt-get update -qq && apt-get install -y build-essential mysql-client node.js
+RUN apt-get update -qq && apt-get install -y build-essential mysql-client
+
+# https://github.com/nodesource/distributions#installation-instructions
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+        && apt-get install -y gcc g++ make nodejs
 
 # Set locale to input multibyte character
 # See:

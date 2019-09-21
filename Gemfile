@@ -48,13 +48,18 @@ gem 'redcarpet'
 # Fast and easy syntax highlighting for selected languages, written in Ruby.
 gem 'coderay'
 
-# The font-awesome font bundled as an asset for the rails asset pipeline
+# # The font-awesome font bundled as an asset for the rails asset pipeline
 gem 'font-awesome-rails'
 
 # Slim is a template language whose goal is to reduce the syntax to the essential parts without becoming cryptic.
 gem 'slim'
 # convert html files to slim
 gem 'html2slim'
+
+# Bootstrap 4 rubygem for Rails / Sprockets / Hanami / etc
+gem 'bootstrap'
+# Bootstrap JavaScript depends on jQuery.
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
