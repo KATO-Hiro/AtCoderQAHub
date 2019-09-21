@@ -81,12 +81,6 @@
                 - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
                 = link_to(like, url, {method: "put"})
 
-              / FIXME: ログインユーザーの投票状況にかかわらず，Likeを選択している
-              / 以下のリンクは，likeを押した&投票していないときだけ
-
-              / likeを既に押した状態の処理
-              / FIXME: 投票を取り消す
-
               = answer.get_upvotes.size
 
               - is_down = @current_user && (@current_user.voted_down_on? answer)
@@ -101,12 +95,6 @@
 
                 - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
                 = link_to(unlike, url, {method: "put"})
-
-              / FIXME: ログインユーザーの投票状況にかかわらず，Unlikeを選択している
-              / 以下のリンクは，unlikeを押した&投票していないときだけ
-
-              / unlikeを既に押した状態の処理
-              / FIXME: 投票を取り消す
 
               = answer.get_downvotes.size
 
