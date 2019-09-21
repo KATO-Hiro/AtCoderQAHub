@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update, :destory]}
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
   end
 
   def show
