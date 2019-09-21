@@ -56,6 +56,11 @@ gem 'slim'
 # convert html files to slim
 gem 'html2slim'
 
+# Bootstrap 4 rubygem for Rails / Sprockets / Hanami / etc
+gem 'bootstrap'
+# Bootstrap JavaScript depends on jQuery.
+gem 'jquery-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
