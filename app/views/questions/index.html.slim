@@ -7,7 +7,6 @@
             | Questions
 
           / TODD: 質問のリンクを追加
-          / TODD: 質問者のリンクを追加
           table[border="1" width="100%"]
               col[style="width:60%"]
               col[style="width:20%"]
@@ -27,7 +26,7 @@
                     td
                       = question.content
                     td
-                      = question.user.name
+                      = link_to(question.user.name, "/users/#{question.user.id}")
                     td
                       = time_ago_in_words(question.created_at) + " ago"
 
