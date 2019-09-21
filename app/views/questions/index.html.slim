@@ -7,13 +7,16 @@
             | Questions
 
           table[border="1" width="100%"]
-              col[style="width:70%"]
+              col[style="width:60%"]
               col[style="width:20%"]
+              col[style="width:10%"]
               col[style="width:10%"]
               thead
                 tr
                   th
                     | Title
+                  th
+                    | Problem
                   th
                     | Questioner
                   th
@@ -24,6 +27,12 @@
                   tr
                     td
                       = link_to(question.title, "/problems/#{question.task_id}/questions/#{question.id}")
+                    td
+                      - problem = Problem.find_by(task_id: question.task_id)
+                      - atcoder = "https://atcoder.jp/contests/"
+                      - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
+
+                      = link_to(problem.title, url, target: "_blank")
                     td
                       = link_to(question.user.name, "/users/#{question.user.id}")
                     td
