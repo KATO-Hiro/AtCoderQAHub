@@ -77,4 +77,9 @@ class AnswersController < ApplicationController
     @answer = Answer.find_by(id: params[:id])
     @answer.downvote_from @current_user
   end
+
+  def cancel_downvote
+    @answer = Answer.find_by(id: params[:id])
+    @answer.undisliked_by @current_user
+  end
 end

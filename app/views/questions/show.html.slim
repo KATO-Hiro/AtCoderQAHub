@@ -93,13 +93,17 @@
 
               - if is_down
                 - unlike = fa_icon "thumbs-down", class: "unliked"
+
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_unlike"
+                = link_to(unlike, url, {method: "put"})
               - else
                 - unlike = fa_icon "thumbs-down", class: "not-voted"
 
+                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
+                = link_to(unlike, url, {method: "put"})
+
               / FIXME: ログインユーザーの投票状況にかかわらず，Unlikeを選択している
               / 以下のリンクは，unlikeを押した&投票していないときだけ
-              - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
-              = link_to(unlike, url, {method: "put"})
 
               / unlikeを既に押した状態の処理
               / FIXME: 投票を取り消す
