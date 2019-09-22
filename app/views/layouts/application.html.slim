@@ -41,7 +41,12 @@ html
                 = link_to("Sign up", "/signup", class: "nav-link")
 
             li.nav-item
-              = link_to("Links", "/links", class: "nav-link")
+              = link_to("Links", "/links", {class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"})
+
+              .dropdown-menu[aria-labelledby="navbarDropdownMenuLink"]
+                = link_to("AtCoder", "https://atcoder.jp/", {class: "dropdown-item", target: "_blank"})
+                = link_to("GitHub", "https://github.com/KATO-Hiro/AtCoderQAHubSandbox", {class: "dropdown-item", target: "_blank"})
+                = link_to("@hiro_hiro", "https://twitter.com/k_hiro1818", {class: "dropdown-item", target: "_blank"})
 
     .header-padding
 
