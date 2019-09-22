@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update]}
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(25)
   end
 
   def show
