@@ -98,6 +98,7 @@
                   .answer__right
                     = answer.content
 
+              / TODO: ヘッダーの右側に設置
               - # Edit and Delete link
               - if @current_user && @current_user.id == answer.user_id.to_i
                 - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
