@@ -1,3 +1,45 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.questions__header {
+  margin: 2% 1%;
+  font-size: 16pt;
+}
+
+.question {
+  display: flex;
+  margin: 1%;
+}
+
+.question__left {
+
+}
+
+.question__status {
+  text-align: center;
+  font-size: 16pt;
+  color: rgb(108, 198, 68);
+}
+
+.question__right {
+  margin-left: 1%;
+}
+
+.question__problem-info {
+  text-align: left;
+}
+
+.question__title {
+  text-align: left;
+  font-size: 18pt;
+}
+
+.question__post-info {
+  text-align: left;
+  font-size: 10pt;
+}
+
+.question__posted-user--icon {
+
+}
