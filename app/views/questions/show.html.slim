@@ -63,8 +63,9 @@
                 = posted_user.name
                 = space + "answered" + space + time_stamp + space + "ago"
 
-              p
-                = answer.content
+              .card-body
+                p.card-text
+                  = answer.content
 
               / TODO: cardのbodyを追加
               / TODO: cardのtextを追加
