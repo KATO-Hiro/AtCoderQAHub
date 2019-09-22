@@ -38,6 +38,7 @@
                 = sanitize(markdown(@question.content))
 
 
+          / FIXME: コントローラーに移動
           / 回答数と内容を表示
             See:
             https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9
@@ -48,9 +49,12 @@
 
           - if @answers
             - @answers.each do |answer|
+              / TODO: cardのヘッダーを追加
               p
                 = answer.content
 
+              / TODO: cardのbodyを追加
+              / TODO: cardのtextを追加
               p
                 |  Posted by:
                 - posted_user = User.find_by(id: answer.user_id)
