@@ -7,46 +7,41 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    link[rel="stylesheet" href="app/assets/stylesheets/home.css"]
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
     header
-      .header-logo
-        a[href="/"]
-          | AtCoder QAHub
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+        = link_to("AtCoder QAHub", "/", class: "navbar-brand")
 
-      .header-list
-        ul
-          li
-            a.home[href="/"]
-              | Home
-          li
-            = link_to("Problems", "/problems")
-          li
-            = link_to("Questions", "/questions")
-          li
-            = link_to("Users", "/users")
-          li
-            a.about[href="/about"]
-              | About
-          li
-            a.guideline[href="/guideline"]
-              | Guideline
+        .header-list
+          ul.navbar-nav
+            li.nav-item
+              = link_to("Home", "/", class: "nav-link")
+            li.nav-item
+              = link_to("Problems", "/problems", class: "nav-link")
+            li.nav-item
+              = link_to("Questions", "/questions", class: "nav-link")
+            li.nav-item
+              = link_to("Users", "/users", class: "nav-link")
+            li.nav-item
+              = link_to("About", "/about", class: "nav-link")
+            li.nav-item
+              = link_to("Guideline", "/guideline", class: "nav-link")
 
-          - if @current_user
-            li
-              = link_to("#{@current_user.name}", "/users/#{@current_user.id}")
-            li
-              = link_to("Log out", "/logout", {method: "post"})
-          - else
-            li
-              = link_to("Log in", "/login")
-            li
-              = link_to("Sign up", "/signup")
-          li
-            a.links[href="/links"]
-              | Links
+            - if @current_user
+              li.nav-item
+                = link_to("#{@current_user.name}", "/users/#{@current_user.id}", class: "nav-link")
+              li.nav-item
+                = link_to("Log out", "/logout", {method: "post", class: "nav-link"})
+            - else
+              li.nav-item
+                = link_to("Log in", "/login", class: "nav-link")
+              li.nav-item
+                = link_to("Sign up", "/signup", class: "nav-link")
+
+            li.nav-item
+              = link_to("Links", "/links", class: "nav-link")
 
     .header-padding
 
