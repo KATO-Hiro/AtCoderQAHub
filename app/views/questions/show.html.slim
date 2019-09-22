@@ -63,6 +63,16 @@
                 = posted_user.name
                 = space + "answered" + space + time_stamp + space + "ago"
 
+                - # Edit and Delete link
+                - if @current_user && @current_user.id == answer.user_id.to_i
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
+                  = link_to("Edit", url)
+
+                  = space
+
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
+                  = link_to("Delete", url, {method: "post"})
+
               .card-body
                 .card-text.answer
                   .answer__left
@@ -99,13 +109,6 @@
                     = answer.content
 
               / TODO: ヘッダーの右側に設置
-              - # Edit and Delete link
-              - if @current_user && @current_user.id == answer.user_id.to_i
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
-                p
-                  = link_to("Edit", url)
-                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
-                  = link_to("Delete", url, {method: "post"})
 
             p.dividing-line
             = paginate @answers
