@@ -7,39 +7,36 @@
           - atcoder = "https://atcoder.jp/contests/"
           - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
-          h2
-            = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
+          .card
+            h2.card-header
+              = @question.title
 
-          - # TODO: 質問をヘッダーとして記載
-          - # FIXME: タイトルと質問内容が見やすくなるようにする
-          h2
-            = @question.title
+              - posted_user = @question.user
+              - space = " "
 
-          - posted_user = @question.user
+              .question__change-button--detail.pull-right
+                - if @current_user && @current_user.id == posted_user.id
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
+                  = link_to("Edit", url, class: "btn btn-primary")
 
-          p
-            |  Posted by:
-            - if posted_user
-              = posted_user.name
+                  / FIXME: Not beautiful
+                  = space
 
-            / See:
-              https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
-            = time_ago_in_words(@question.created_at) + " ago"
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
+                  = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
 
-          - if @question.created_at != @question.updated_at
-            p
-              |  Updated:
-              = time_ago_in_words(@question.updated_at) + " ago"
+              p.question__post-info--detail
+                / See:
+                  https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
+                = "#{posted_user.name}" + space + "posted this question" + space + time_ago_in_words(@question.created_at) + space + "ago"
 
-          p
-            = sanitize(markdown(@question.content))
+            .card_body
+              h5.card-title.question__problem-info--detail.dividing-line
+                = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
 
-          - if @current_user && @current_user.id == posted_user.id
-            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
-            = link_to("Edit", url)
+              .card-text.question__problem-info--detail
+                = sanitize(markdown(@question.content))
 
-            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
-            = link_to("Delete", url, {method: "post"})
 
           / 回答数と内容を表示
             See:
