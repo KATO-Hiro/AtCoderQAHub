@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "about"    , to: "home#about"
   get "guideline", to: "home#guideline"
   get "userpage" , to: "home#userpage"
-  get "links"    , to: "home#links"
 
   get "/users"             , to: "users#index"
   get "/signup"            , to: "users#new"
