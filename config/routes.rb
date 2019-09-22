@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/"        , to: "home#top"
-  get "about"    , to: "home#about"
-  get "guideline", to: "home#guideline"
-  get "userpage" , to: "home#userpage"
+  get "/", to: "home#top"
 
   get "/users"             , to: "users#index"
   get "/signup"            , to: "users#new"
