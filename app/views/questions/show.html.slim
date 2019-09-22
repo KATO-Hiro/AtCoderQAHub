@@ -47,26 +47,27 @@
           h3.dividing-line
             = "#{@answers.total_count}" + " Answer"
 
+          .card
+
           - if @answers
             - @answers.each do |answer|
-              / TODO: cardのヘッダーを追加
+              p.card-header
+                - posted_user = User.find_by(id: answer.user_id)
+
+                - if answer.created_at != answer.updated_at
+                  - time_stamp  = time_ago_in_words(answer.updated_at)
+                - else
+                  - time_stamp  = time_ago_in_words(answer.created_at)
+
+                / TODO: 名前はやや大きめに
+                = posted_user.name
+                = space + "answered" + space + time_stamp + space + "ago"
+
               p
                 = answer.content
 
               / TODO: cardのbodyを追加
               / TODO: cardのtextを追加
-              p
-                |  Posted by:
-                - posted_user = User.find_by(id: answer.user_id)
-                = posted_user.name
-                small
-                  = time_ago_in_words(answer.created_at) + " ago"
-
-              - if answer.created_at != answer.updated_at
-                p
-                  |  Updated:
-                  small
-                    = time_ago_in_words(answer.updated_at) + " ago"
 
               / Vote
               - is_up = @current_user && (@current_user.voted_up_on? answer)
