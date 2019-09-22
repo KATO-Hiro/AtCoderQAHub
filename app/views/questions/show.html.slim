@@ -74,7 +74,7 @@
                         | unliked
 
                   .answer__right
-                  = answer.content
+                    = answer.content
 
               / Vote
               - is_up = @current_user && (@current_user.voted_up_on? answer)
