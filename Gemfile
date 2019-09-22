@@ -57,7 +57,7 @@ gem 'slim'
 gem 'html2slim'
 
 # Bootstrap 4 rubygem for Rails / Sprockets / Hanami / etc
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.3.1'
 # Bootstrap JavaScript depends on jQuery.
 gem 'jquery-rails'
 
