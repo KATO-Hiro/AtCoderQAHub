@@ -68,40 +68,35 @@
                   .answer__left
                     .answer__vote
                       .answer__vote--liked
-                        | liked
+                        - is_up = @current_user && (@current_user.voted_up_on? answer)
+
+                        - if is_up
+                          - like = fa_icon "thumbs-up", class: "liked"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_like"
+                        - else
+                          - like = fa_icon "thumbs-up", class: "not-voted"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
+
+                        = link_to(like, url, {method: "put"})
+                        = space
+                        = answer.get_upvotes.size
 
                       .answer__vote--unliked
-                        | unliked
+                        - is_down = @current_user && (@current_user.voted_down_on? answer)
+
+                        - if is_down
+                          - unlike = fa_icon "thumbs-down", class: "unliked"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_unlike"
+                        - else
+                          - unlike = fa_icon "thumbs-down", class: "not-voted"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
+
+                        = link_to(unlike, url, {method: "put"})
+                        = space
+                        = answer.get_downvotes.size
 
                   .answer__right
                     = answer.content
-
-              / Vote
-              - is_up = @current_user && (@current_user.voted_up_on? answer)
-
-              - if is_up
-                - like = fa_icon "thumbs-up", class: "liked"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_like"
-              - else
-                - like = fa_icon "thumbs-up", class: "not-voted"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
-
-              = link_to(like, url, {method: "put"})
-
-              = answer.get_upvotes.size
-
-              - is_down = @current_user && (@current_user.voted_down_on? answer)
-
-              - if is_down
-                - unlike = fa_icon "thumbs-down", class: "unliked"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_unlike"
-              - else
-                - unlike = fa_icon "thumbs-down", class: "not-voted"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
-
-              = link_to(unlike, url, {method: "put"})
-
-              = answer.get_downvotes.size
 
               - # Edit and Delete link
               - if @current_user && @current_user.id == answer.user_id.to_i
