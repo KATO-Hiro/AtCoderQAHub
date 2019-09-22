@@ -29,11 +29,6 @@
                 = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
 
               p.card-text
-                - if @question.created_at != @question.updated_at
-                  p
-                    |  Updated:
-                    = time_ago_in_words(@question.updated_at) + " ago"
-
                 / TODO: ボタンを問題名の隣に寄せる
                 / TODO: ボタン同士をやや離す
                 - if @current_user && @current_user.id == posted_user.id
