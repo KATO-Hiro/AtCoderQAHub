@@ -64,7 +64,16 @@
                 = space + "answered" + space + time_stamp + space + "ago"
 
               .card-body
-                p.card-text
+                .card-text.answer
+                  .answer__left
+                    .answer__vote
+                      .answer__vote--liked
+                        | liked
+
+                      .answer__vote--unliked
+                        | unliked
+
+                  .answer__right
                   = answer.content
 
               / Vote
