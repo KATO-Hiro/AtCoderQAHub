@@ -11,10 +11,18 @@
             h2.card-header
               = @question.title
 
+              - posted_user = @question.user
               - space = " "
 
+              .question__change-button--detail.pull-right
+                - if @current_user && @current_user.id == posted_user.id
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
+                  = link_to("Edit", url, class: "btn btn-primary")
+
+                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
+                  = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
+
               p.question__post-info--detail
-                - posted_user = @question.user
 
                 / See:
                   https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
@@ -25,14 +33,7 @@
                 = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
 
               .card-text.question__problem-info--detail
-                / TODO: ボタンを問題名の隣に寄せる
                 / TODO: ボタン同士をやや離す
-                - if @current_user && @current_user.id == posted_user.id
-                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
-                  = link_to("Edit", url, class: "btn btn-primary")
-
-                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
-                  = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
 
                 = sanitize(markdown(@question.content))
 
