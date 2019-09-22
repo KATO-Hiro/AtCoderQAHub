@@ -36,8 +36,6 @@
                 = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
 
               .card-text.question__problem-info--detail
-                / TODO: ボタン同士をやや離す
-
                 = sanitize(markdown(@question.content))
 
 
