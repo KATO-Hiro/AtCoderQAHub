@@ -19,6 +19,9 @@
                   - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
                   = link_to("Edit", url, class: "btn btn-primary")
 
+                  / FIXME: Not beautiful
+                  = space
+
                   - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
                   = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
 
