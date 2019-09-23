@@ -11,7 +11,7 @@
 
           / ログイン状態のときだけ質問の投稿を許可する
           - if @current_user
-            = link_to("New Question", "/problems/#{@problem.task_id}/questions/new", class: "btn btn-success btn-sm")
+            = link_to("New Question", "/problems/#{@problem.task_id}/questions/new", class: "btn btn-outline-success btn-sm")
 
           / FIXME: CSSで配置を調整する
           br
@@ -64,4 +64,4 @@
 
           p
 
-          = link_to("◀ Return to list", "/problems/", class: "btn btn-secondary btn-sm")
+          = link_to("◀ Return to list", "/problems/", class: "btn btn-outline-secondary btn-sm")
