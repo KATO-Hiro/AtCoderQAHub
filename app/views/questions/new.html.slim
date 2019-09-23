@@ -6,12 +6,12 @@
           / TODO: コントローラーに移動
           - @problem = Problem.find_by(task_id: params[:task_id])
 
-          h2
-            = @problem.contest_id.upcase + ": " + @problem.title
-
           - @question.errors.full_messages.each do |message|
             .form-error
               = message
+
+          h2
+            = @problem.contest_id.upcase + ": " + @problem.title
 
           = form_tag("/problems/#{@problem.task_id}/questions/create") do
 
