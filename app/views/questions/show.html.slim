@@ -51,7 +51,7 @@
 
           - if @answers
             - @answers.each do |answer|
-              p.card-header
+              .card-header
                 - posted_user = User.find_by(id: answer.user_id)
 
                 - if answer.created_at != answer.updated_at
@@ -63,15 +63,15 @@
                 = posted_user.name
                 = space + "answered" + space + time_stamp + space + "ago"
 
-                - # Edit and Delete link
-                - if @current_user && @current_user.id == answer.user_id.to_i
-                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
-                  = link_to("Edit", url)
+                .answer__change-button--detail.pull-right
+                  - if @current_user && @current_user.id == answer.user_id.to_i
+                    - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
+                    = link_to("Edit", url, class: "btn btn-primary")
 
-                  = space
+                    = space
 
-                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
-                  = link_to("Delete", url, {method: "post"})
+                    - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
+                    = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
 
               .card-body
                 .card-text.answer
