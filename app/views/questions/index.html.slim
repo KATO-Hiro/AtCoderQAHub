@@ -4,18 +4,20 @@
       .heading
         .questions
           / TODO: 既存のコードをBootstrapを使って少しずつ置き換える
-          .card
-            .card-header
-            ul.list-group.list-group-flush
-              li.list-group-item
-                | Sample
-
           h2
             | Questions
 
           - space = " "
           - exclamation = fa_icon "exclamation-circle"
           - check = fa_icon "check"
+
+          .card
+            .card-header.questions__header
+              = exclamation + space + "#{32}" + space + "Open" + space + space + check + space + "#{200}" + space + "Closed"
+
+            ul.list-group.list-group-flush
+              li.list-group-item
+                | Sample
 
           table[border="1" width="100%"]
               col[style="width:100%"]
