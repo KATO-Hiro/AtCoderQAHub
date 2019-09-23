@@ -31,28 +31,29 @@
 
                   ul.list-group.list-group-flash
                     li.list-group-item
-                      .problems__wrapper
-                        / See:
-                          https://docs.ruby-lang.org/ja/latest/class/String.html
-                          https://qiita.com/jnchito/items/64c3fdc53766ac6f2008#%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E5%AD%A6%E3%81%B6%E3%81%93%E3%81%A8
-                        - if problem.contest_id =~ /abc\d{3}/
-                          - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
+                      / See:
+                        https://docs.ruby-lang.org/ja/latest/class/String.html
+                        https://qiita.com/jnchito/items/64c3fdc53766ac6f2008#%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E5%AD%A6%E3%81%B6%E3%81%93%E3%81%A8
+                      - if problem.contest_id =~ /abc\d{3}/
+                        - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
-                          / TODO: 文字サイズを小さく
-                          .problems__title
+                        / TODO: 文字サイズを小さく
+                        .problems__wrapper
+                          h4.problems__title
                             = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
 
-                          / TODO: 右寄せ
                           / TODO: 文字サイズを小さく
                           / TODO: アイコンを追加
+                          / See:
+                          / https://www.nxworld.net/tips/flexbox-examples.html
                           .problems__questions
                             - questions = Question.where(task_id: problem.task_id)
                             = questions.count
 
-                          / TODO: 右寄せ
-                          / TODO: 文字サイズを小さく
-                          .problems__qa-board-button
-                            = link_to("Open ▶", "/problems/#{problem.task_id}", class: "btn abc")
+                        / TODO: 右寄せ
+                        / TODO: 文字サイズを小さく
+                        .problems__qa-board-button
+                          = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
 
           .abc
           / .arc
