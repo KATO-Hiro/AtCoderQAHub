@@ -37,11 +37,17 @@
                       - if problem.contest_id =~ /abc\d{3}/
                         - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
+                        / TODO: 文字サイズを小さく
                         = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
 
+                        / TODO: 右寄せ
+                        / TODO: 文字サイズを小さく
+                        / TODO: アイコンを追加
                         - questions = Question.where(task_id: problem.task_id)
                         = questions.count
 
+                        / TODO: 右寄せ
+                        / TODO: 文字サイズを小さく
                         = link_to("Open ▶", "/problems/#{problem.task_id}", class: "btn abc")
 
           .abc
