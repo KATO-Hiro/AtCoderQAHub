@@ -8,26 +8,33 @@
           - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
 
           h2
-            = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank", color: "black")
+            | Update your question info
 
           .form-error
             - @question.errors.full_messages.each do |message|
               = message
 
+          h5
+            = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank", color: "black")
+
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do
-            p
-              | Title (up to 36 characters)
-            input[name="title" value="#{@question.title}"]
+            .form
+              .form-group
+                label for="edit-question-title"
+                  | Title (up to 36 characters)
+                input[name="title" value="#{@question.title}" class="form-control" id="editQuestionTitle" aria-describedby="editQuestionTitleHelp"]
 
-            p
-              | URL
-            input[name="url" value=""]
+              .form-group
+                label for="edit-question-url"
+                  | URL
+                input[name="url" value="" class="form-control" id="editUrlRelatedQuestion"]
 
-            p
-              | Descriptions (up to 140 characters)
-            textarea[name="content"]
-              = @question.content
+              .form-group
+                label for="edit-content"
+                  | Descriptions (up to 140 characters)
+                textarea[name="content" class="form-control" id="editQuestionContent" rows="5"]
+                  = @question.content
 
-            p
-            input[type="submit" value="Update"]
-            input[type="button" value="Back" onclick="history.back()"]
+              input[type="submit" value="Save" class="btn btn-primary btn-sm"]
+              = " "
+              input[type="button" value="Back" onclick="history.back()" class="btn btn-dark btn-sm"]
