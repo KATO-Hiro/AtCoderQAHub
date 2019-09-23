@@ -1,3 +1,27 @@
 // Place all the styles related to the problems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.problems__wrapper {
+  display: flex;
+}
+
+.problems__title {
+  margin-right: auto;
+}
+
+.problems__questions {
+  font-size: 12pt;
+}
+
+.problems__questions--comment {
+  color: white;
+  // See:
+  // https://chaika.hatenablog.com/entry/2017/03/27/142705
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
+}
+
+.problems__qa-board-button {
+  font-size: 12pt;
+}
