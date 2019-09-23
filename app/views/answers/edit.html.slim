@@ -3,15 +3,22 @@
     .container
       .heading
         .answers
+          / TODO: コントローラーに移動
           - @problem = Problem.find_by(task_id: params[:task_id])
           - @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0]
-
-          h2
-            = @problem.contest_id.upcase + ": " + @problem.title
 
           - @answer.errors.full_messages.each do |message|
             .form-error
               = message
+
+          h2
+            | Update your answer
+
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
+
+          h5
+            = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
 
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/#{@answer.id}/update") do
             p
