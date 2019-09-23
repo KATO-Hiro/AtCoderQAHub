@@ -49,7 +49,9 @@
                     .questions__bottom
                       .question__post-info
                         = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
-                        = link_to(question.user.name, "/users/#{question.user.id}")
+
+                        span.question__post-info--posted-user
+                          = link_to(question.user.name, "/users/#{question.user.id}")
 
           / TODO: 入力フォームを用意
 
