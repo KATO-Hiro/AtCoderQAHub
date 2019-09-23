@@ -7,6 +7,11 @@
           - @problem = Problem.find_by(task_id: params[:task_id])
           - @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0]
 
+          / TODO: 上段に移動
+          - @answer.errors.full_messages.each do |message|
+            .form-error
+              = message
+
           / TODO: ページタイトルを追加
           h2
             | Create answer
@@ -17,11 +22,6 @@
           / TODO: リンクを追加
           h5
             = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
-
-          / TODO: 上段に移動
-          - @answer.errors.full_messages.each do |message|
-            .form-error
-              = message
 
           / Bootstrapのformを適用
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/create") do
