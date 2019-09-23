@@ -11,9 +11,12 @@
           h2
             | Create answer
 
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
+
           / TODO: リンクを追加
           h5
-            = @problem.contest_id.upcase + ": " + @problem.title
+            = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
 
           / TODO: 上段に移動
           - @answer.errors.full_messages.each do |message|
