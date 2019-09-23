@@ -1,3 +1,40 @@
 // Place all the styles related to the answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.answer {
+  display: flex;
+}
+
+.answer__count{
+  margin: 1%;
+  padding: 1% 0%;
+}
+
+.answer__posted--user-name {
+  font-size: 16pt;
+}
+
+.answer__change-button--detail {
+
+}
+
+.answer__left {
+
+}
+
+.answer__vote {
+  font-size: 16pt;
+}
+
+.answer__vote--liked {
+
+}
+
+.answer__vote--unliked {
+
+}
+
+.answer__right {
+  margin-left: 2%;
+}

@@ -38,66 +38,76 @@
                 = sanitize(markdown(@question.content))
 
 
+          / FIXME: コントローラーに移動
           / 回答数と内容を表示
             See:
             https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9
           - @answers = Answer.where(question_id: @question.id).page(params[:page]).per(5)
 
-          h3.dividing-line
+          h3.answer__count.dividing-line
             = "#{@answers.total_count}" + " Answer"
+
+          .card
 
           - if @answers
             - @answers.each do |answer|
-              p
-                = answer.content
-
-              p
-                |  Posted by:
+              .card-header
                 - posted_user = User.find_by(id: answer.user_id)
-                = posted_user.name
-                small
-                  = time_ago_in_words(answer.created_at) + " ago"
 
-              - if answer.created_at != answer.updated_at
-                p
-                  |  Updated:
-                  small
-                    = time_ago_in_words(answer.updated_at) + " ago"
+                - if answer.created_at != answer.updated_at
+                  - time_stamp  = time_ago_in_words(answer.updated_at)
+                - else
+                  - time_stamp  = time_ago_in_words(answer.created_at)
 
-              / Vote
-              - is_up = @current_user && (@current_user.voted_up_on? answer)
+                span.answer__posted--user-name
+                  = posted_user.name
 
-              - if is_up
-                - like = fa_icon "thumbs-up", class: "liked"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_like"
-              - else
-                - like = fa_icon "thumbs-up", class: "not-voted"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
+                = space + "answered" + space + time_stamp + space + "ago"
 
-              = link_to(like, url, {method: "put"})
+                .answer__change-button--detail.pull-right
+                  - if @current_user && @current_user.id == answer.user_id.to_i
+                    - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
+                    = link_to("Edit", url, class: "btn btn-primary btn-sm")
 
-              = answer.get_upvotes.size
+                    = space
 
-              - is_down = @current_user && (@current_user.voted_down_on? answer)
+                    - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
+                    = link_to("Delete", url, {method: "post", class: "btn btn-dark btn-sm"})
 
-              - if is_down
-                - unlike = fa_icon "thumbs-down", class: "unliked"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_unlike"
-              - else
-                - unlike = fa_icon "thumbs-down", class: "not-voted"
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
+              .card-body
+                .card-text.answer
+                  .answer__left
+                    .answer__vote
+                      .answer__vote--liked
+                        - is_up = @current_user && (@current_user.voted_up_on? answer)
 
-              = link_to(unlike, url, {method: "put"})
+                        - if is_up
+                          - like = fa_icon "thumbs-up", class: "liked"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_like"
+                        - else
+                          - like = fa_icon "thumbs-up", class: "not-voted"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/like"
 
-              = answer.get_downvotes.size
+                        = link_to(like, url, {method: "put"})
+                        = space
+                        = answer.get_upvotes.size
 
-              - # Edit and Delete link
-              - if @current_user && @current_user.id == answer.user_id.to_i
-                - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
-                p
-                  = link_to("Edit", url)
-                  - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
-                  = link_to("Delete", url, {method: "post"})
+                      .answer__vote--unliked
+                        - is_down = @current_user && (@current_user.voted_down_on? answer)
+
+                        - if is_down
+                          - unlike = fa_icon "thumbs-down", class: "unliked"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/cancel_unlike"
+                        - else
+                          - unlike = fa_icon "thumbs-down", class: "not-voted"
+                          - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/unlike"
+
+                        = link_to(unlike, url, {method: "put"})
+                        = space
+                        = answer.get_downvotes.size
+
+                  .answer__right
+                    = answer.content
 
             p.dividing-line
             = paginate @answers
