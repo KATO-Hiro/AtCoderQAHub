@@ -20,9 +20,15 @@
           / DBから該当する問題の質問のみ抽出
           / TODO: コントローラーに移動
           - @questions = Question.where(task_id: @problem.task_id)
+          - exclamation = fa_icon "exclamation-circle"
+          - check = fa_icon "check"
+          - space = " "
 
           .card
             .card-header
+              / dummy value
+              = exclamation + space + 26.to_s + space + "Open" + space + check + space + 10.to_s + space + "Closed"
+
             ul.list-group.list-group-flush
               - @questions.each do |question|
 
@@ -46,8 +52,6 @@
 
                         .question__answers--count
                             = link_to(answers_count, url)
-
-                    - space = " "
 
                     .questions__bottom
                       .question__post-info
