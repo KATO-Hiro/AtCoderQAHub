@@ -37,12 +37,15 @@
                         - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
                         = link_to("#{question.title}", "#{url}")
 
-                      .question__answers--comment
-                        = fa_icon "comment"
+                      - answers = Answer.where(question_id: question.id)
+                      - answers_count = answers.count
 
-                      .question__answers--count
-                        - answers = Answer.where(question_id: question.id)
-                        = answers.count
+                      - if answers_count > 0
+                        .question__answers--comment
+                            = fa_icon "comment"
+
+                        .question__answers--count
+                            = link_to(answers_count, url)
 
                     - space = " "
 
