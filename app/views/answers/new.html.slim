@@ -3,23 +3,32 @@
     .container
       .heading
         .answers
+          / TODO: コントローラーに移動
           - @problem = Problem.find_by(task_id: params[:task_id])
           - @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0]
 
+          / TODO: ページタイトルを追加
+
+          / TODO: リンクを追加
           h2
             = @problem.contest_id.upcase + ": " + @problem.title
 
+          / TODO: 上段に移動
           - @answer.errors.full_messages.each do |message|
             .form-error
               = message
 
+          / Bootstrapのformを適用
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/create") do
+            / TODO: ラベルに置き換え
             p
               | Descriptions (up to 400 characters)
 
+            / TODO: 見た目を整える
             textarea[name="content"]
               = @content
 
+            / TODO: 見た目を整える
             p
             input[type="submit" value="Answer Submit"]
             input[type="button" value="Back" onclick="history.back()"]
