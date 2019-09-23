@@ -10,8 +10,11 @@
             .form-error
               = message
 
-          h2
-            = @problem.contest_id.upcase + ": " + @problem.title
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
+
+          h5
+            = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
 
           = form_tag("/problems/#{@problem.task_id}/questions/create") do
 
