@@ -11,7 +11,7 @@
             - @question.errors.full_messages.each do |message|
               = message
 
-          h2
+          h5
             = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank", color: "black")
 
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do
