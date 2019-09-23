@@ -21,11 +21,13 @@
             = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
 
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/#{@answer.id}/update") do
-            p
-              | Descriptions (up to 400 characters)
+            .form
+              .form-group
+                label for="edit-content"
+                  | Descriptions (up to 400 characters)
 
-            textarea[name="content"]
-              = @answer.content
+                textarea[name="content"class="form-control" id="editAnswerContent" rows="5"]
+                  = @answer.content
 
             p
             input[type="submit" value="Update"]
