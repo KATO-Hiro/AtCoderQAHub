@@ -27,12 +27,14 @@
               - @questions.each do |question|
 
                 li.list-group-item
+                  = fa_icon "exclamation-circle"
                   - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
                   = link_to("#{question.title}", "#{url}")
 
                   - answers = Answer.where(question_id: question.id)
                   = answers.count
 
+                  = fa_icon "comment"
                   - space = " "
                   = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
                   = link_to(question.user.name, "/users/#{question.user.id}")
