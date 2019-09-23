@@ -17,13 +17,13 @@
               .question__change-button--detail.pull-right
                 - if @current_user && @current_user.id == posted_user.id
                   - url = "/problems/#{@question.task_id}/questions/#{@question.id}/edit"
-                  = link_to("Edit", url, class: "btn btn-primary")
+                  = link_to("Edit", url, class: "btn btn-outline-dark")
 
                   / FIXME: Not beautiful
                   = space
 
                   - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
-                  = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
+                  = link_to("Delete", url, {method: "post", class: "btn btn-outline-danger"})
 
               p.question__post-info--detail
                 / See:
@@ -67,12 +67,12 @@
                 .answer__change-button--detail.pull-right
                   - if @current_user && @current_user.id == answer.user_id.to_i
                     - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
-                    = link_to("Edit", url, class: "btn btn-primary btn-sm")
+                    = link_to("Edit", url, class: "btn btn btn-outline-dark btn-sm")
 
                     = space
 
                     - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
-                    = link_to("Delete", url, {method: "post", class: "btn btn-dark btn-sm"})
+                    = link_to("Delete", url, {method: "post", class: "btn btn-outline-danger btn-sm"})
 
               .card-body
                 .card-text.answer
