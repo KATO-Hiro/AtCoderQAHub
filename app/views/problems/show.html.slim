@@ -32,16 +32,17 @@
                       = fa_icon "exclamation-circle"
 
                     .question__right
-                      .question__title
-                        - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
-                        = link_to("#{question.title}", "#{url}")
-
-                        - answers = Answer.where(question_id: question.id)
-                        = answers.count
+                      .question__wrapper
+                        .question__title
+                          - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
+                          = link_to("#{question.title}", "#{url}")
 
                         .question__answers--comment
                           = fa_icon "comment"
                           - space = " "
+
+                        - answers = Answer.where(question_id: question.id)
+                        = answers.count
 
                       .question__post-info
                         = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
