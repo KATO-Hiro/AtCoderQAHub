@@ -47,9 +47,12 @@
                           / See:
                           / https://www.nxworld.net/tips/flexbox-examples.html
                           .problems__questions
-                            = fa_icon "comment"
                             - questions = Question.where(task_id: problem.task_id)
-                            = questions.count
+                            - questions_count = questions.count
+
+                            - if questions_count > 0
+                              = fa_icon "comment"
+                              = questions_count
 
                         / TODO: 右寄せ
                         / TODO: 文字サイズを小さく
