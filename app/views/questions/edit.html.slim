@@ -7,6 +7,9 @@
           - atcoder = "https://atcoder.jp/contests/"
           - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
 
+          h2
+            | Update your question info
+
           .form-error
             - @question.errors.full_messages.each do |message|
               = message
