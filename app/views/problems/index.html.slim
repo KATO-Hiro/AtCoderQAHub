@@ -51,7 +51,8 @@
                             - questions_count = questions.count
 
                             - if questions_count > 0
-                              = fa_icon "comment"
+                              = fa_icon "comment", class: "problems__questions--comment"
+                              = " "
                               = questions_count
 
                         / TODO: 右寄せ
