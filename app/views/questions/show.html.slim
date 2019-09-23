@@ -60,7 +60,9 @@
                   - time_stamp  = time_ago_in_words(answer.created_at)
 
                 / TODO: 名前はやや大きめに
-                = posted_user.name
+                span.answer__posted--user-name
+                  = posted_user.name
+
                 = space + "answered" + space + time_stamp + space + "ago"
 
                 .answer__change-button--detail.pull-right
