@@ -37,32 +37,6 @@
                   = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
                   = link_to(question.user.name, "/users/#{question.user.id}")
 
-          table[border="1" width="100%"]
-            col[style="width:90%"]
-            col[style="width:10%"]
-            thead
-              tr
-                th
-                  = @questions.count
-                  |  Questions
-                th
-                  | Answers
-
-            tbody
-              - @questions.each do |question|
-                tr
-                  / TODO: 質問にリンクを貼る
-                  / TODO: 質問を左寄せする
-                  td
-                    / FIXME: idが全体としての通し番号になっているため，問題ごとに集計する
-                    - url = "/problems/#{@problem.task_id}/questions/#{question.id}"
-                    = link_to("#{question.title}", "#{url}")
-
-                  td
-                    - answers = Answer.where(question_id: question.id)
-                    = answers.count
-          br
-
           / TODO: 入力フォームを用意
 
           = link_to("◀ Return to list", "/problems/", class: "btn")
