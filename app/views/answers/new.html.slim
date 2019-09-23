@@ -7,35 +7,28 @@
           - @problem = Problem.find_by(task_id: params[:task_id])
           - @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0]
 
-          / TODO: 上段に移動
           - @answer.errors.full_messages.each do |message|
             .form-error
               = message
 
-          / TODO: ページタイトルを追加
           h2
             | Create answer
 
           - atcoder = "https://atcoder.jp/contests/"
           - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
 
-          / TODO: リンクを追加
           h5
             = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
 
-          / Bootstrapのformを適用
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/answers/create") do
-            / TODO: ラベルに置き換え
             .form
               .form-group
                 label for="content"
                   | Descriptions (up to 400 characters)
 
-                / TODO: 見た目を整える
                 textarea[name="content" class="form-control" id="answerContent" rows="5" placeholder="Enter answer"]
                   = @content
 
-              / TODO: 見た目を整える
               p
               input[type="submit" value="Comment" class="btn btn-primary btn-sm"]
               = " "
