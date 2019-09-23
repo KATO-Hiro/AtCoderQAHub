@@ -7,53 +7,72 @@
             .card-header
               ul.nav.nav-tabs.card-header-tabs
                 li.nav-item
-                  a.nav-link.active[href="/problems"]
+                  a.nav-link.active[href="#abc"]
                     | ABC
                 li.nav-item
-                  a.nav-link[href="#"]
+                  a.nav-link[href="#arc"]
                     | ARC
                 li.nav-item
-                  a.nav-link[href="#"]
+                  a.nav-link[href="#agc"]
                     | AGC
                 li.nav-item
-                  a.nav-link[href="#"]
+                  a.nav-link[href="#others"]
                     | Others
 
-            .card-body
-              / TODO: 定数化
-              - atcoder = "https://atcoder.jp/contests/"
+            .section[id="abc"]
+              .card-body
+                / TODO: 定数化
+                - atcoder = "https://atcoder.jp/contests/"
 
-              h3.card-title
-                | AtCoder Beginner Contest
+                h3.card-title
+                  | AtCoder Beginner Contest
 
-              / Dummy space
-              p
-                |
+                / Dummy space
+                p
+                  |
 
-                / TODO: 関数化
-                - @problems.each do |problem|
+                  / TODO: 関数化
+                  - @problems.each do |problem|
 
-                  ul.list-group.list-group-flash
-                    li.list-group-item
-                      / See:
-                        https://docs.ruby-lang.org/ja/latest/class/String.html
-                        https://qiita.com/jnchito/items/64c3fdc53766ac6f2008#%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E5%AD%A6%E3%81%B6%E3%81%93%E3%81%A8
-                      - if problem.contest_id =~ /abc\d{3}/
-                        - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
+                    ul.list-group.list-group-flash
+                      li.list-group-item
+                        / See:
+                          https://docs.ruby-lang.org/ja/latest/class/String.html
+                          https://qiita.com/jnchito/items/64c3fdc53766ac6f2008#%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E5%AD%A6%E3%81%B6%E3%81%93%E3%81%A8
+                        - if problem.contest_id =~ /abc\d{3}/
+                          - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
-                        .problems__wrapper
-                          h4.problems__title
-                            = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
+                          .problems__wrapper
+                            h4.problems__title
+                              = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
 
-                          / See:
-                          / https://www.nxworld.net/tips/flexbox-examples.html
-                          .problems__questions
-                            - questions = Question.where(task_id: problem.task_id)
-                            - questions_count = questions.count
+                            / See:
+                            / https://www.nxworld.net/tips/flexbox-examples.html
+                            .problems__questions
+                              - questions = Question.where(task_id: problem.task_id)
+                              - questions_count = questions.count
 
-                            - if questions_count > 0
-                              - comment = fa_icon "comment", class: "problems__questions--comment"
-                              = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
+                              - if questions_count > 0
+                                - comment = fa_icon "comment", class: "problems__questions--comment"
+                                = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
 
-                        .problems__qa-board-button
-                          = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+                          .problems__qa-board-button
+                            = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+
+            .section[id="arc"]
+              .card-body
+
+                h3.card-title
+                  | AtCoder Regular Contest
+
+            .section[id="agc"]
+              .card-body
+
+                h3.card-title
+                  | AtCoder Grand Contest
+
+            .section[id="others"]
+              .card-body
+
+                h3.card-title
+                  | Other Contests
