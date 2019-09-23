@@ -20,6 +20,16 @@
           / DBから該当する問題の質問のみ抽出
           - @questions = Question.where(task_id: @problem.task_id)
 
+          .card
+            .card-header
+              ul.list-group.list-group-flush
+                li.list-group-item
+                  | hoge
+                li.list-group-item
+                  | hoge
+                li.list-group-item
+                  | hoge
+
           table[border="1" width="100%"]
             col[style="width:90%"]
             col[style="width:10%"]
