@@ -3,29 +3,39 @@
     .container
       .heading
         .questions
+          / TODO: コントローラーに移動
           - @problem = Problem.find_by(task_id: params[:task_id])
-
-          h2
-            = @problem.contest_id.upcase + ": " + @problem.title
 
           - @question.errors.full_messages.each do |message|
             .form-error
               = message
 
+          - atcoder = "https://atcoder.jp/contests/"
+          - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
+
+          h5
+            = link_to("#{@problem.contest_id.upcase + ": " +@problem.title}", url, target: "_blank")
+
           = form_tag("/problems/#{@problem.task_id}/questions/create") do
-            p
-              | Title (up to 36 characters)
-            input[name="title" value="#{@title}"]
 
-            p
-              | URL
-            input[name="url"]
+            .form
+              .form-group
+                label for="question-title"
+                  | Title (up to 36 characters)
+                input[name="title" value="#{@title}" class="form-control" id="questionTitle" aria-describedby="questionTitleHelp" placeholder="Enter question title"]
 
-            p
-              | Descriptions (up to 140 characters)
-            textarea[name="content"]
-              = @content
+              .form-group
+                label for="url-related-question"
+                  | URL
+                input[name="url" class="form-control" id="urlRelatedQuestion" placeholder="Enter the relevant URL if necessary"]
 
-            p
-            input[type="submit" value="Submit"]
-            input[type="button" value="Back" onclick="history.back()"]
+              .form-group
+                label for="content"
+                  | Descriptions (up to 140 characters)
+                textarea[name="content" class="form-control" id="questionContent" rows="5" placeholder="Enter question details"]
+                  = @content
+
+              p
+              input[type="submit" value="Submit" class="btn btn-primary btn-sm"]
+              = " "
+              input[type="button" value="Back" onclick="history.back()" class="btn btn-dark btn-sm"]
