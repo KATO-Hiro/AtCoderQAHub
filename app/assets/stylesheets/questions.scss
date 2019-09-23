@@ -50,6 +50,14 @@
   font-size: 11pt;
 }
 
+.question__answers--comment {
+  color: white;
+  // See:
+  // https://chaika.hatenablog.com/entry/2017/03/27/142705
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
+}
+
 .question__posted-user--icon {
 
 }

@@ -39,8 +39,9 @@
                         - answers = Answer.where(question_id: question.id)
                         = answers.count
 
-                        = fa_icon "comment"
-                        - space = " "
+                        .question__answers--comment
+                          = fa_icon "comment"
+                          - space = " "
 
                       .question__post-info
                         = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
