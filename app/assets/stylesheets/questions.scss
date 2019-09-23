@@ -7,13 +7,24 @@
   font-size: 16pt;
 }
 
+.questions {
+}
+
 .question {
   display: flex;
   margin: 1%;
 }
+.questions__left {
+  float: left;
+}
 
-.question__wrapper {
+.questions__right {
   display: flex;
+  margin-left: 3%;
+}
+
+.questions__bottom {
+  margin-left: 3%;
 }
 
 .question__left {
@@ -38,6 +49,12 @@
   margin: 3%;
 }
 
+.questions__title {
+  text-align: left;
+  font-size: 18pt;
+  margin-right: auto;
+}
+
 .question__title {
   text-align: left;
   font-size: 18pt;
@@ -60,6 +77,10 @@
   // https://chaika.hatenablog.com/entry/2017/03/27/142705
   -webkit-text-stroke-color: #000;
   -webkit-text-stroke-width: 1px;
+}
+
+.question__answers--count {
+  margin-left: 0.5%;
 }
 
 .question__posted-user--icon {
