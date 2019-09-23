@@ -7,12 +7,12 @@
           - atcoder = "https://atcoder.jp/contests/"
           - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
 
-          h2
-            = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank", color: "black")
-
           .form-error
             - @question.errors.full_messages.each do |message|
               = message
+
+          h2
+            = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank", color: "black")
 
           = form_tag("/problems/#{@problem.task_id}/questions/#{@question.id}/update") do
             p
