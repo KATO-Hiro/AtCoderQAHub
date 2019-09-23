@@ -37,13 +37,10 @@
                       - if problem.contest_id =~ /abc\d{3}/
                         - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
-                        / TODO: 文字サイズを小さく
                         .problems__wrapper
                           h4.problems__title
                             = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
 
-                          / TODO: 文字サイズを小さく
-                          / TODO: アイコンを追加
                           / See:
                           / https://www.nxworld.net/tips/flexbox-examples.html
                           .problems__questions
@@ -55,31 +52,5 @@
                               = " "
                               = questions_count
 
-                        / TODO: 右寄せ
-                        / TODO: 文字サイズを小さく
                         .problems__qa-board-button
                           = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
-
-          .abc
-          / .arc
-
-          / .agc
-            h2
-              | AtCoder Grand Contest
-            table [border="1" width="100%"]
-              [col style="width:75%"]
-              [col style="width:10%"]
-              [col style="width:10%"]
-              [col style="width:5%"]
-              thead
-                tr
-                  th
-                    | Problem
-                  th
-                    | Questions
-                  th
-                    | Answers
-                  th
-                    | Room
-
-          .other
