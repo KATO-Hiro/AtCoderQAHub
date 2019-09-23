@@ -66,12 +66,12 @@
                 .answer__change-button--detail.pull-right
                   - if @current_user && @current_user.id == answer.user_id.to_i
                     - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/edit"
-                    = link_to("Edit", url, class: "btn btn-primary")
+                    = link_to("Edit", url, class: "btn btn-primary btn-sm")
 
                     = space
 
                     - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/#{answer.id}/destroy"
-                    = link_to("Delete", url, {method: "post", class: "btn btn-dark"})
+                    = link_to("Delete", url, {method: "post", class: "btn btn-dark btn-sm"})
 
               .card-body
                 .card-text.answer
