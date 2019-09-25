@@ -114,9 +114,6 @@
             p.dividing-line
 
           - if @current_user
-            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new"
-            = link_to("Write Your Answer", url)
-
             / - @answer.errors.full_messages.each do |message|
             /   .form-error
             /     = message
