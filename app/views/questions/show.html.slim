@@ -114,9 +114,8 @@
             p.dividing-line
 
           - if @current_user
-            / - @answer.errors.full_messages.each do |message|
-            /   .form-error
-            /     = message
+            .form-error
+              = @error_message
 
             h2
               | Create answer
