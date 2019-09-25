@@ -22,9 +22,11 @@ class AnswersController < ApplicationController
       flash[:notice] = "Submit your answer!"
       redirect_to("/problems/#{task_id}/questions/#{@answer.question_id}")
     else
+      @question = Question.find_by(id: params[:question_id], task_id: task_id)
+      @error_message = "Must be between 1 and 400 characters."
       @content = params[:content]
 
-      render("answers/new")
+      render "questions/show"
     end
   end
 

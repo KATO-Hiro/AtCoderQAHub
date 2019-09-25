@@ -114,5 +114,22 @@
             p.dividing-line
 
           - if @current_user
-            - url = "/problems/#{@question.task_id}/questions/#{@question.id}/answers/new"
-            = link_to("Write Your Answer", url)
+            .form-error
+              = @error_message
+
+            h2
+              | Create answer
+
+            = form_tag("/problems/#{@question.task_id}/questions/#{@question.id}/answers/create") do
+              .form
+                .form-group
+                  label for="content"
+                    | Descriptions (up to 400 characters)
+
+                  textarea[name="content" class="form-control" id="answerContent" rows="5" placeholder="Enter answer"]
+                    = @content
+
+                p
+                input[type="submit" value="Comment" class="btn btn-outline-success btn-sm"]
+                = " "
+                input[type="button" value="Back" onclick="history.back()" class="btn btn-outline-secondary btn-sm"]
