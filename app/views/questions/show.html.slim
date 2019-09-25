@@ -123,10 +123,7 @@
             = form_tag("/problems/#{@question.task_id}/questions/#{@question.id}/answers/create") do
               .form
                 .form-group
-                  label for="content"
-                    | Descriptions (up to 400 characters)
-
-                  textarea[name="content" class="form-control" id="answerContent" rows="5" placeholder="Enter answer"]
+                  textarea[name="content" class="form-control" id="answerContent" rows="5" placeholder="Enter answer (up to 400 characters)"]
                     = @content
 
                 p
