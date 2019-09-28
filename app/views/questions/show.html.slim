@@ -25,17 +25,17 @@
                   - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
                   = link_to("Delete", url, {method: "post", class: "btn btn-outline-danger"})
 
+              p.question__post-info--detail
+                / See:
+                  https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
+                = "#{posted_user.name}" + space + "posted this question" + space + time_ago_in_words(@question.created_at) + space + "ago"
+
               p.question__post-info--url
                 - url = @question.url
 
                 - if url
                   = "See: "
                   = link_to(url, url)
-
-              p.question__post-info--detail
-                / See:
-                  https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
-                = "#{posted_user.name}" + space + "posted this question" + space + time_ago_in_words(@question.created_at) + space + "ago"
 
             .card_body
               h5.card-title.question__problem-info--detail.dividing-line
