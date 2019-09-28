@@ -7,6 +7,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(id: params[:id])
+    # See:
+    # https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9
+    @answers = Answer.where(question_id: @question.id).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new

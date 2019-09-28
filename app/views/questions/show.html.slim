@@ -38,12 +38,7 @@
                 = sanitize(markdown(@question.content))
 
 
-          / FIXME: コントローラーに移動
           / 回答数と内容を表示
-            See:
-            https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9
-          - @answers = Answer.where(question_id: @question.id).page(params[:page]).per(5)
-
           h3.answer__count.dividing-line
             = "#{@answers.total_count}" + " Answer"
 
