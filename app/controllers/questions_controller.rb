@@ -46,6 +46,7 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(id: params[:id])
 
     @question.title = params[:title]
+    @question.url = params[:url]
     @question.content = params[:content]
 
     if @question.save
