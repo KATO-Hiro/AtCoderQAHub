@@ -25,6 +25,13 @@
                   - url = "/problems/#{@question.task_id}/questions/#{@question.id}/destroy"
                   = link_to("Delete", url, {method: "post", class: "btn btn-outline-danger"})
 
+              p
+                - url = @question.url
+
+                - if url
+                  = "See: "
+                  = link_to(url, url)
+
               p.question__post-info--detail
                 / See:
                   https://apidock.com/rails/ActionView/Helpers/DateHelper/time_ago_in_words
