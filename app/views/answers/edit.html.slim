@@ -8,7 +8,7 @@
           - @question = Question.where(id: params[:question_id], task_id: params[:task_id])[0]
 
           - @answer.errors.full_messages.each do |message|
-            .form-error
+            .alert.alert-danger[role="alert"]
               = message
 
           h2
