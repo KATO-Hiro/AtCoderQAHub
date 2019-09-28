@@ -45,10 +45,10 @@ html
                 = link_to("@hiro_hiro", "https://twitter.com/k_hiro1818", {class: "dropdown-item", target: "_blank"})
 
     .header-padding
-
-    .flash-style
-      - if flash[:notice]
-        = flash[:notice]
+      .flash-style
+        - if flash[:notice]
+          .alert.alert-success[role="alert"]
+            = flash[:notice]
 
     == yield
 
