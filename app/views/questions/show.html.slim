@@ -37,7 +37,7 @@
               .card-text.question__problem-info--detail
                 = sanitize(markdown(@question.content))
 
-
+          - logger.debug("[Debug]" +"#{@answer.nil?}")
           / 回答数と内容を表示
           h3.answer__count.dividing-line
             = "#{@answers.total_count}" + " Answer"
@@ -109,17 +109,18 @@
             p.dividing-line
 
           - if @current_user
-            .alert.alert-danger[role="alert"]
-              = @error_message
+              - if @error_message
+                .alert.alert-danger[role="alert"]
+                  = @error_message
 
-            h2
-              | Create answer
+              h2
+                | Create answer
 
-            = form_tag("/problems/#{@question.task_id}/questions/#{@question.id}/answers/create") do
-              .form
-                .form-group
-                  textarea[name="content" class="form-control" id="answerContent" rows="5" placeholder="Enter answer (up to 400 characters)"]
-                    = @content
+              = form_tag("/problems/#{@question.task_id}/questions/#{@question.id}/answers/create") do
+                .form
+                  .form-group
+                    textarea[name="content" class="form-control" id="answerContent" rows="5" placeholder="Enter answer (up to 400 characters)"]
+                      = @content
 
-                p
-                input[type="submit" value="Comment" class="btn btn-success btn-sm"]
+                  p
+                  input[type="submit" value="Comment" class="btn btn-success btn-sm"]
