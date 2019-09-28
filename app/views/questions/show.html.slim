@@ -9,6 +9,9 @@
 
           .card
             h2.card-header
+              .card-title.question__problem-info--link
+                = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
+
               = @question.title
 
               - posted_user = @question.user
@@ -38,9 +41,6 @@
                   = link_to(url, url, target: "_blank")
 
             .card_body
-              h5.card-title.question__problem-info--detail.dividing-line
-                = link_to("#{problem.contest_id.upcase + ": " + problem.title}", url, target: "_blank", color: "black")
-
               .card-text.question__problem-info--detail
                 = sanitize(markdown(@question.content))
 
