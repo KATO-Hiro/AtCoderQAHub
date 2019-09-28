@@ -7,12 +7,12 @@
           - atcoder = "https://atcoder.jp/contests/"
           - url = atcoder + @problem.contest_id + "/tasks/" + @problem.task_id
 
+          - @question.errors.full_messages.each do |message|
+            .alert.alert-danger[role="alert"]
+              = message
+
           h2
             | Update your question info
-
-          .form-error
-            - @question.errors.full_messages.each do |message|
-              = message
 
           h5
             = link_to("#{@problem.contest_id.upcase + ": " + @problem.title}", url, target: "_blank", color: "black")
