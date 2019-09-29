@@ -36,8 +36,6 @@ class ProblemsController < ApplicationController
     problems_api = 'https://kenkoooo.com/atcoder/resources/problems.json'
     problems = fetch_api_in_json_format problems_api
 
-    logger.debug("DEBUG" + "#{contests.inspect}")
-
     problems.each do |problem_api|
       unless Problem.find_by(task_id: problem_api["id"])
         problem = Problem.new(
