@@ -20,111 +20,15 @@
                     | Others
 
             .section[id="abc"]
-              .card-body
-                / TODO: 定数化
-                - atcoder = "https://atcoder.jp/contests/"
-
-                h3.card-title
-                  | AtCoder Beginner Contest
-
-                / Dummy space
-                p
-                  |
-
-                  / TODO: 関数化
-                  - @problems.each do |problem|
-                    / See:
-                      https://docs.ruby-lang.org/ja/latest/class/String.html
-                      https://qiita.com/jnchito/items/64c3fdc53766ac6f2008#%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E5%AD%A6%E3%81%B6%E3%81%93%E3%81%A8
-                    - if problem.contest_id =~ /abc\d{3}/
-                      - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
-
-                      ul.list-group.list-group-flash
-                        li.list-group-item
-
-                          .problems__wrapper
-                            h4.problems__title
-                              = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
-
-                            / See:
-                            / https://www.nxworld.net/tips/flexbox-examples.html
-                            .problems__questions
-                              - questions = Question.where(task_id: problem.task_id)
-                              - questions_count = questions.count
-
-                              - if questions_count > 0
-                                - comment = fa_icon "comment", class: "problems__questions--comment"
-                                = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
-
-                          .problems__qa-board-button
-                            = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+              = render "problem", problems: @problems, title: "AtCoder Beginner Contest", filter: /abc\d{3}/
 
             .section[id="arc"]
-              .card-body
-
-                h3.card-title
-                  | AtCoder Regular Contest
-
-                / Dummy space
-                p
-                  |
-
-                  / FIXME: 重複が多い
-                  - @problems.each do |problem|
-                    - if problem.contest_id =~ /arc\d{3}/
-                      - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
-
-                      ul.list-group.list-group-flash
-                        li.list-group-item
-
-                          .problems__wrapper
-                            h4.problems__title
-                              = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
-
-                            .problems__questions
-                              - questions = Question.where(task_id: problem.task_id)
-                              - questions_count = questions.count
-
-                              - if questions_count > 0
-                                - comment = fa_icon "comment", class: "problems__questions--comment"
-                                = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
-
-                          .problems__qa-board-button
-                            = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+              = render "problem", problems: @problems, title: "AtCoder Regular Contest", filter: /arc\d{3}/
 
             .section[id="agc"]
-              .card-body
+              = render "problem", problems: @problems, title: "AtCoder Grand Contest", filter: /agc\d{3}/
 
-                h3.card-title
-                  | AtCoder Grand Contest
-
-                / Dummy space
-                p
-                  |
-
-                  / FIXME: 重複が多い
-                  - @problems.each do |problem|
-                    - if problem.contest_id =~ /agc\d{3}/
-                      - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
-
-                      ul.list-group.list-group-flash
-                        li.list-group-item
-
-                          .problems__wrapper
-                            h4.problems__title
-                              = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
-
-                            .problems__questions
-                              - questions = Question.where(task_id: problem.task_id)
-                              - questions_count = questions.count
-
-                              - if questions_count > 0
-                                - comment = fa_icon "comment", class: "problems__questions--comment"
-                                = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
-
-                          .problems__qa-board-button
-                            = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
-
+            / TODO: a[brg]c以外と指定
             .section[id="others"]
               .card-body
 

@@ -1,0 +1,41 @@
+.card-body
+  h3.card-title
+    = title
+
+  / Dummy space
+  p
+    |
+
+    / TODO: 関数化
+    - problems.each do |problem|
+      / See:
+        https://docs.ruby-lang.org/ja/latest/class/String.html
+        https://qiita.com/jnchito/items/64c3fdc53766ac6f2008#%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E5%AD%A6%E3%81%B6%E3%81%93%E3%81%A8
+      - if problem.contest_id =~ filter
+        / TODO: 定数化
+        - atcoder = "https://atcoder.jp/contests/"
+        - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
+
+        ul.list-group.list-group-flash
+          li.list-group-item
+
+            .problems__wrapper
+              h4.problems__title
+                = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
+
+              / See:
+              / https://www.nxworld.net/tips/flexbox-examples.html
+              .problems__questions
+                - questions = Question.where(task_id: problem.task_id)
+                - questions_count = questions.count
+
+                - if questions_count > 0
+                  - comment = fa_icon "comment", class: "problems__questions--comment"
+                  = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
+
+            .problems__qa-board-button
+              = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+
+    / XXX: 全問題を使っているため，空白のページが発生している
+    / TODO: コンテスト種類に応じて表示できるようにする
+    = paginate problems
