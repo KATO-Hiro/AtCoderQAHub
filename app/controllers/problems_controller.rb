@@ -55,7 +55,7 @@ class ProblemsController < ApplicationController
     redirect_to("/problems/new")
   end
 
-  # TODO: privateメソッドに
+private
   def fetch_api_in_json_format(url)
     response = Faraday.get url
     response_body = response.body.force_encoding("UTF-8")
