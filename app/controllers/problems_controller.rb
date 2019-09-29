@@ -18,6 +18,21 @@ class ProblemsController < ApplicationController
     contests_api = 'https://kenkoooo.com/atcoder/resources/contests.json'
     contests = fetch_api_in_json_format contests_api
 
+    contests.each do |contest_api|
+      unless Contest.find_by(contest_id: contest_api["id"])
+        contest = Contest.new(
+          contest_id: contest_api["id"],
+          start_epoch_second: contest_api["start_epoch_second"],
+          title: contest_api["title"],
+        )
+
+        if contest.save
+        else
+          logger.debug("DEBUG: " + "Failed to save the contest" + "#{contest.inspect}")
+        end
+      end
+    end
+
     problems_api = 'https://kenkoooo.com/atcoder/resources/problems.json'
     problems = fetch_api_in_json_format problems_api
 
