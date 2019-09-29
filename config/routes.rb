@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   post "/logout"           , to: "users#logout"
 
   get "/problems"         , to: "problems#index"
+  get "/problems/new"     , to: "problems#new"
   get "/problems/:task_id", to: "problems#show"
+  post "/problems/create" , to: "problems#create"
 
   get "/questions"                               , to: "questions#index"
   get "/problems/:task_id/questions/new"         , to: "questions#new"
