@@ -35,3 +35,7 @@
 
             .problems__qa-board-button
               = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+
+    / XXX: 全問題を使っているため，空白のページが発生している
+    / TODO: コンテスト種類に応じて表示できるようにする
+    = paginate problems
