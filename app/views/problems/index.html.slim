@@ -37,37 +37,6 @@
 
             .section[id="agc"]
               = render "problem", problems: @problems, title: "AtCoder Grand Contest", filter: /agc\d{3}/
-              / .card-body
-
-              /   h3.card-title
-              /     | AtCoder Grand Contest
-
-              /   / Dummy space
-              /   p
-              /     |
-
-              /     / FIXME: 重複が多い
-              /     - @problems.each do |problem|
-              /       - if problem.contest_id =~ /agc\d{3}/
-              /         - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
-
-              /         ul.list-group.list-group-flash
-              /           li.list-group-item
-
-              /             .problems__wrapper
-              /               h4.problems__title
-              /                 = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
-
-              /               .problems__questions
-              /                 - questions = Question.where(task_id: problem.task_id)
-              /                 - questions_count = questions.count
-
-              /                 - if questions_count > 0
-              /                   - comment = fa_icon "comment", class: "problems__questions--comment"
-              /                   = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
-
-              /             .problems__qa-board-button
-              /               = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
 
             .section[id="others"]
               .card-body
