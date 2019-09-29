@@ -19,15 +19,6 @@
                   a.nav-link[href="#others"]
                     | Others
 
-            / 相違点
-            / section.id
-            / ヘッダータイトル
-            / コンテストidのフィルター部分
-
-            / TODO: 上記をハッシュなどにまとめる
-            / TODO: 部分テンプレートを使う
-            / TODO: 変数の部分をrenderに渡す
-
             .section[id="abc"]
               = render "problem", problems: @problems, title: "AtCoder Beginner Contest", filter: /abc\d{3}/
 
