@@ -33,7 +33,7 @@
 
             / TODO: a[brg]c以外と指定
             .section[id="others"]
-              - problems = problem.where.not("task_id like? or task_id like? or task_id like?", "abc%", "arc%", "agc%")
+              - problems = @problems.where.not("task_id like? or task_id like? or task_id like?", "abc%", "arc%", "agc%")
               / FIXME: filterの指定がうまくできていない
               / = render "problem", problems: problems, title: "other contests", filter: //
 
