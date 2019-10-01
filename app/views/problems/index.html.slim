@@ -35,9 +35,9 @@
             .section[id="others"]
               - problems = @problems.where.not("task_id like? or task_id like? or task_id like?", "abc%", "arc%", "agc%")
               / FIXME: filterの指定がうまくできていない
-              / = render "problem", problems: problems, title: "other contests", filter: //
+              = render "problem", problems: problems, title: "Other Contests", filter: //
 
-              .card-body
+              / .card-body
 
-                h3.card-title
-                  | Other Contests
+              /   h3.card-title
+              /     | Other Contests
