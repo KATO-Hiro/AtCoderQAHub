@@ -28,7 +28,8 @@
               = render "problem", problems: problems, title: "AtCoder Regular Contest", filter: /arc\d{3}/
 
             .section[id="agc"]
-              = render "problem", problems: @problems, title: "AtCoder Grand Contest", filter: /agc\d{3}/
+              - problems = @problems.where("task_id LIKE?", "agc%")
+              = render "problem", problems: problems, title: "AtCoder Grand Contest", filter: /agc\d{3}/
 
             / TODO: a[brg]c以外と指定
             .section[id="others"]
