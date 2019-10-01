@@ -20,7 +20,8 @@
                     | Others
 
             .section[id="abc"]
-              = render "problem", problems: @problems, title: "AtCoder Beginner Contest", filter: /abc\d{3}/
+              - problems = @problems.where("task_id LIKE?", "abc%")
+              = render "problem", problems: problems, title: "AtCoder Beginner Contest", filter: /abc\d{3}/
 
             .section[id="arc"]
               = render "problem", problems: @problems, title: "AtCoder Regular Contest", filter: /arc\d{3}/
