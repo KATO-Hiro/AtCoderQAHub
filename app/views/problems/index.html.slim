@@ -21,16 +21,16 @@
 
             .section[id="abc"]
               - problems = @problems.where("task_id LIKE?", "abc%")
-              = render "problem", problems: problems, title: "AtCoder Beginner Contest", filter: /abc\d{3}/
+              = render "problem", problems: problems, title: "AtCoder Beginner Contest"
 
             .section[id="arc"]
               - problems = @problems.where("task_id LIKE?", "arc%")
-              = render "problem", problems: problems, title: "AtCoder Regular Contest", filter: /arc\d{3}/
+              = render "problem", problems: problems, title: "AtCoder Regular Contest"
 
             .section[id="agc"]
               - problems = @problems.where("task_id LIKE?", "agc%")
-              = render "problem", problems: problems, title: "AtCoder Grand Contest", filter: /agc\d{3}/
+              = render "problem", problems: problems, title: "AtCoder Grand Contest"
 
             .section[id="others"]
               - problems = @problems.where.not("task_id like? or task_id like? or task_id like?", "abc%", "arc%", "agc%")
-              = render "problem", problems: problems, title: "Other Contests", filter: //
+              = render "problem", problems: problems, title: "Other Contests"
