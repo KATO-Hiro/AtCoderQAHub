@@ -53,6 +53,14 @@ class ProblemsController < ApplicationController
     end
 
     # TODO: 同じ日に開催されたコンテストで，重複する問題に対処
+    @contests = Contest.all
+
+    @contests.each do |contest|
+      if contest.held_on_the_same_day?
+        logger.debug("DEBUG: " + "#{contest.inspect}")
+      end
+
+    end
 
     flash[:notice] = "Updated!"
     redirect_to("/problems/new")
