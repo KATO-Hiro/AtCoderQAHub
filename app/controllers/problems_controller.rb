@@ -52,6 +52,8 @@ class ProblemsController < ApplicationController
       end
     end
 
+    # TODO: 同じ日に開催されたコンテストで，重複する問題に対処
+
     flash[:notice] = "Updated!"
     redirect_to("/problems/new")
   end
