@@ -6,28 +6,31 @@
   p
     |
 
-    - problems.each do |problem|
-      - atcoder = "https://atcoder.jp/contests/"
-      - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
+    - contests.each do |contest|
+      - problems = Problem.where(contest_id: contest.contest_id)
 
-      ul.list-group.list-group-flash
-        li.list-group-item
+      - problems.each do |problem|
+        - atcoder = "https://atcoder.jp/contests/"
+        - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
 
-          .problems__wrapper
-            h4.problems__title
-              = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
+        ul.list-group.list-group-flash
+          li.list-group-item
 
-            / See:
-            / https://www.nxworld.net/tips/flexbox-examples.html
-            .problems__questions
-              - questions = Question.where(task_id: problem.task_id)
-              - questions_count = questions.count
+            .problems__wrapper
+              h4.problems__title
+                = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
 
-              - if questions_count > 0
-                - comment = fa_icon "comment", class: "problems__questions--comment"
-                = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
+              / See:
+              / https://www.nxworld.net/tips/flexbox-examples.html
+              .problems__questions
+                - questions = Question.where(task_id: problem.task_id)
+                - questions_count = questions.count
 
-          .problems__qa-board-button
-            = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+                - if questions_count > 0
+                  - comment = fa_icon "comment", class: "problems__questions--comment"
+                  = link_to(comment + " " + questions_count.to_s, "/problems/#{problem.task_id}")
 
-    = paginate problems
+            .problems__qa-board-button
+              = link_to("Go Q&A board ▶", "/problems/#{problem.task_id}", class: "btn btn-success btn-sm abc")
+
+    = paginate contests

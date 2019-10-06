@@ -19,18 +19,24 @@
                   a.nav-link[href="#others"]
                     | Others
 
+            - contests = @contests
+
             .section[id="abc"]
+              - contests_abc = contests.where("contest_id LIKE?", "abc%").order(start_epoch_second: :desc)
               - problems = @problems.where("task_id LIKE?", "abc%")
-              = render "problem", problems: problems, title: "AtCoder Beginner Contest"
+              = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
 
             .section[id="arc"]
+              - contests_arc = contests.where("contest_id LIKE?", "arc%").order(start_epoch_second: :desc)
               - problems = @problems.where("task_id LIKE?", "arc%")
-              = render "problem", problems: problems, title: "AtCoder Regular Contest"
+              = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
 
             .section[id="agc"]
+              - contests_agc = contests.where("contest_id LIKE?", "agc%").order(start_epoch_second: :desc)
               - problems = @problems.where("task_id LIKE?", "agc%")
-              = render "problem", problems: problems, title: "AtCoder Grand Contest"
+              = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
 
             .section[id="others"]
+              - contests_others = contests.where.not("contest_id like? or contest_id like? or contest_id like?", "abc%", "arc%", "agc%").order(start_epoch_second: :desc)
               - problems = @problems.where.not("task_id like? or task_id like? or task_id like?", "abc%", "arc%", "agc%")
-              = render "problem", problems: problems, title: "Other Contests"
+              = render "problem", contests: contests_others, title: "Other Contests"
