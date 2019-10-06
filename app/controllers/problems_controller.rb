@@ -57,7 +57,18 @@ class ProblemsController < ApplicationController
 
     @contests.each do |contest|
       if contest.held_on_the_same_day?
-        logger.debug("DEBUG: " + "#{contest.inspect}")
+        source = contest
+        destinations = Contest.where(contest_id: source.contest_id)
+
+        source.problems.each do |source_problem|
+          destinations.each do |destination|
+            destination.problems.each do |problem|
+              unless problem.duplicated?(source_problem)
+                logger.debug("DEBUG: " + "#{problem.task_id}")
+              end
+            end
+          end
+        end
       end
 
     end
