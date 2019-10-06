@@ -6,6 +6,9 @@
   p
     |
 
+    - contests.each do |contest|
+      = contest.contest_id
+
     - problems.each do |problem|
       - atcoder = "https://atcoder.jp/contests/"
       - url = atcoder + problem.contest_id + "/tasks/" + problem.task_id
