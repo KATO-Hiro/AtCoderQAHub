@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   def index
+    @contests = Contest.all
     @problems = Problem.all.page(params[:page]).per(25)
   end
 
