@@ -7,7 +7,6 @@
     |
 
     - contests.each do |contest|
-      / TODO: ?????????
       - problems = Problem.where(contest_id: contest.contest_id).order(:task_id)
 
       - problems.each do |problem|
