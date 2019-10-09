@@ -52,6 +52,27 @@ class ProblemsController < ApplicationController
       end
     end
 
+    # 同じ日に開催されたコンテストで，重複する問題に対処
+    contests_problems_api = 'https://kenkoooo.com/atcoder/resources/contest-problem.json'
+    contests_problems = fetch_api_in_json_format contests_problems_api
+
+    contests_problems.each do |contest_problem|
+      unless Problem.find_by(contest_id: contest_problem["contest_id"], task_id: contest_problem["problem_id"])
+        problem_title = Problem.find_by(task_id: contest_problem["problem_id"]).title
+
+        problem = Problem.new(
+          task_id: contest_problem["problem_id"],
+          contest_id: contest_problem["contest_id"],
+          title: problem_title,
+        )
+
+        if problem.save
+        else
+          logger.debug("DEBUG: " + "Failed to save the problem" + "#{problem.inspect}")
+        end
+      end
+    end
+
     flash[:notice] = "Updated!"
     redirect_to("/problems/new")
   end
