@@ -70,6 +70,17 @@
   margin-left: auto;
 }
 
+.question__title--answers-comment {
+  font-size: 12pt;
+}
+
+.question__title--answers-icon {
+  color: white;
+  // See:
+  // https://chaika.hatenablog.com/entry/2017/03/27/142705
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
+}
 .question__post-info {
   text-align: left;
   font-size: 10pt;
