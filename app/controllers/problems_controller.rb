@@ -66,7 +66,10 @@ class ProblemsController < ApplicationController
           title: problem_title,
         )
 
-        logger.debug("DEBUG: " + "#{problem.inspect}")
+        if problem.save
+        else
+          logger.debug("DEBUG: " + "Failed to save the problem" + "#{problem.inspect}")
+        end
       end
     end
 
