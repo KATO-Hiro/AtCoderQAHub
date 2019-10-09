@@ -52,7 +52,7 @@ class ProblemsController < ApplicationController
       end
     end
 
-    # TODO: 同じ日に開催されたコンテストで，重複する問題に対処
+    # 同じ日に開催されたコンテストで，重複する問題に対処
     contests_problems_api = 'https://kenkoooo.com/atcoder/resources/contest-problem.json'
     contests_problems = fetch_api_in_json_format contests_problems_api
 
