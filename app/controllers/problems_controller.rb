@@ -56,8 +56,10 @@ class ProblemsController < ApplicationController
     contests_problems_api = 'https://kenkoooo.com/atcoder/resources/contest-problem.json'
     contests_problems = fetch_api_in_json_format contests_problems_api
 
-    contests_problems.each do |contest_id, problem_id|
-      logger.debug("DEBUG: " + "#{contest_id}" + "#{problem_id}")
+    contests_problems.each do |contest_problem|
+      unless Problem.find_by(contest_id: contest_problem["contest_id"], task_id: contest_problem["problem_id"])
+        logger.debug("DEBUG: " + "#{contest_problem["contest_id"]}" + "#{contest_problem["problem_id"]}")
+      end
     end
 
     flash[:notice] = "Updated!"
