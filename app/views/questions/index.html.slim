@@ -38,10 +38,12 @@
                         / TODO: 右寄せ
                         / TODO: コメントマークを追加
                         - comment = fa_icon "comment"
-                        = comment
                         / TODO: 回答数を表示
                         - answers = Answer.where(question_id: question.id)
-                        = answers.count
+
+                        - if answers.count > 0
+                          = comment
+                          = answers.count
 
                       .question__post-info
                         = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
