@@ -36,16 +36,11 @@
                       .question__title
                         .
                           = link_to(question.title, "/problems/#{question.task_id}/questions/#{question.id}")
-                          / TODO: 右寄せ
-                          / TODO: 回答数を表示
                           - answers = Answer.where(question_id: question.id)
                           - answers_count = answers.count
 
                         .question__title--answers-comment
                           - if answers_count > 0
-                            / TODO: コメントマークを追加
-                            / TODO: コメントマークを白抜きに
-                            / TODO: 回答数のフォントを小さく
                             - comment = fa_icon "comment", class: "question__title--answers-icon"
                             = link_to(comment + " " + answers_count.to_s, "/problems/#{question.task_id}/questions/#{question.id}")
 
