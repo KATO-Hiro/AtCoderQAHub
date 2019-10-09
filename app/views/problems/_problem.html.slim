@@ -18,7 +18,7 @@
 
             .problems__wrapper
               h4.problems__title
-                = link_to("#{problem.contest_id.upcase + ": " + problem.title}", "#{url}", target: '_blank')
+                = link_to("#{contest.title + ": " + problem.title}", "#{url}", target: '_blank')
 
               / See:
               / https://www.nxworld.net/tips/flexbox-examples.html
