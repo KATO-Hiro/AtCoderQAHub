@@ -39,6 +39,7 @@
 
 .question__right {
   margin-left: 1%;
+  width: 100%;
 }
 
 .question__problem-info {
@@ -62,6 +63,11 @@
 .question__title {
   text-align: left;
   font-size: 18pt;
+  display: flex;
+}
+
+.question__title >:last-child {
+  margin-left: auto;
 }
 
 .question__post-info {
