@@ -53,24 +53,10 @@ class ProblemsController < ApplicationController
     end
 
     # TODO: 同じ日に開催されたコンテストで，重複する問題に対処
-    @contests = Contest.all
-
-    @contests.each do |contest|
-      if contest.held_on_the_same_day?
-        source = contest
-        destinations = Contest.where(contest_id: source.contest_id)
-
-        source.problems.each do |source_problem|
-          destinations.each do |destination|
-            destination.problems.each do |problem|
-              unless problem.duplicated?(source_problem)
-                logger.debug("DEBUG: " + "#{problem.task_id}")
-              end
-            end
-          end
-        end
-      end
-
+    contests_problems_api = 'https://kenkoooo.com/atcoder/resources/contest-problem.json'
+    contests_problems = fetch_api_in_json_format contests_problems_api
+    contests_problems.each do |contest_id, problem_id|
+      logger.debug("DEBUG: " + "#{contest_id}" + "#{problem_id}")
     end
 
     flash[:notice] = "Updated!"
