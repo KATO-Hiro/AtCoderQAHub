@@ -58,7 +58,15 @@ class ProblemsController < ApplicationController
 
     contests_problems.each do |contest_problem|
       unless Problem.find_by(contest_id: contest_problem["contest_id"], task_id: contest_problem["problem_id"])
-        logger.debug("DEBUG: " + "#{contest_problem["contest_id"]}" + "#{contest_problem["problem_id"]}")
+        problem_title = Problem.find_by(task_id: contest_problem["problem_id"]).title
+
+        problem = Problem.new(
+          task_id: contest_problem["problem_id"],
+          contest_id: contest_problem["contest_id"],
+          title: problem_title,
+        )
+
+        logger.debug("DEBUG: " + "#{problem.inspect}")
       end
     end
 
