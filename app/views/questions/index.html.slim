@@ -43,6 +43,8 @@
 
                           - if answers_count > 0
                             / TODO: コメントマークを追加
+                            / TODO: コメントマークを白抜きに
+                            / TODO: 回答数のフォントを小さく
                             - comment = fa_icon "comment"
                             = link_to(comment + " " + answers_count.to_s, "/problems/#{question.task_id}/questions/#{question.id}")
 
