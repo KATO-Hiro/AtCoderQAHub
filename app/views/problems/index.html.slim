@@ -7,32 +7,33 @@
             .card-header
               ul.nav.nav-tabs.card-header-tabs
                 li.nav-item
-                  a.nav-link.active[href="#abc"]
+                  a.nav-link.active[href="#abc" data-toggle="tab"]
                     | ABC
                 li.nav-item
-                  a.nav-link[href="#arc"]
+                  a.nav-link[href="#arc" data-toggle="tab"]
                     | ARC
                 li.nav-item
-                  a.nav-link[href="#agc"]
+                  a.nav-link[href="#agc" data-toggle="tab"]
                     | AGC
                 li.nav-item
-                  a.nav-link[href="#others"]
+                  a.nav-link[href="#others" data-toggle="tab"]
                     | Others
 
-            - contests = @contests
+            .tab-content
+              - contests = @contests
 
-            .section[id="abc"]
-              - contests_abc = contests.where("contest_id LIKE?", "abc%").order(start_epoch_second: :desc)
-              = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
+              .tab-pane.active[id="abc"]
+                - contests_abc = contests.where("contest_id LIKE?", "abc%").order(start_epoch_second: :desc)
+                = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
 
-            .section[id="arc"]
-              - contests_arc = contests.where("contest_id LIKE?", "arc%").order(start_epoch_second: :desc)
-              = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
+              .tab-pane[id="arc"]
+                - contests_arc = contests.where("contest_id LIKE?", "arc%").order(start_epoch_second: :desc)
+                = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
 
-            .section[id="agc"]
-              - contests_agc = contests.where("contest_id LIKE?", "agc%").order(start_epoch_second: :desc)
-              = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
+              .tab-pane[id="agc"]
+                - contests_agc = contests.where("contest_id LIKE?", "agc%").order(start_epoch_second: :desc)
+                = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
 
-            .section[id="others"]
-              - contests_others = contests.where.not("contest_id like? or contest_id like? or contest_id like?", "abc%", "arc%", "agc%").order(start_epoch_second: :desc)
-              = render "problem", contests: contests_others, title: "Other Contests"
+              .tab-pane[id="others"]
+                - contests_others = contests.where.not("contest_id like? or contest_id like? or contest_id like?", "abc%", "arc%", "agc%").order(start_epoch_second: :desc)
+                = render "problem", contests: contests_others, title: "Other Contests"
