@@ -34,7 +34,15 @@
                         = link_to(problem.contest_id.upcase + ":" + space + problem.title, url, target: "_blank")
 
                       .question__title
-                        = link_to(question.title, "/problems/#{question.task_id}/questions/#{question.id}")
+                        .
+                          = link_to(question.title, "/problems/#{question.task_id}/questions/#{question.id}")
+                          - answers = Answer.where(question_id: question.id)
+                          - answers_count = answers.count
+
+                        .question__title--answers-comment
+                          - if answers_count > 0
+                            - comment = fa_icon "comment", class: "question__title--answers-icon"
+                            = link_to(comment + " " + answers_count.to_s, "/problems/#{question.task_id}/questions/#{question.id}")
 
                       .question__post-info
                         = "Posted" + space + time_ago_in_words(question.created_at) + space + "ago" + space + "by" + space
