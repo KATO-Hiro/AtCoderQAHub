@@ -12,8 +12,27 @@
               = link_to("Delete", "/users/#{@user.id}/destroy", {method: "post"})
 
             / タブを追加
+            .card
+              .card-header
+                ul.nav.nav-tabs.card-header-tabs
+                  li.nav-item
+                    a.nav-link.active[href="#questioned" data-toggle="tab"]
+                      | Questioned
+                  li.nav-item
+                    a.nav-link[href="#answered" data-toggle="tab"]
+                      | Answered
+                  li.nav-item
+                    a.nav-link[href="#liked" data-toggle="tab"]
+                      | Liked
 
-            / ダミーのページを用意
+              / ダミーのページを用意
+              .tab-content
+                .tab-pane.active[id="questioned"]
+                  | hoge
+                .tab-pane[id="answered"]
+                  | foo
+                .tab-pane[id="liked"]
+                  | bar
 
           p
             | Comming soon.
