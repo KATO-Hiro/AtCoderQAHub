@@ -11,5 +11,20 @@
               = link_to("Edit", "/users/#{@user.id}/edit")
               = link_to("Delete", "/users/#{@user.id}/destroy", {method: "post"})
 
-          p
-            | Comming soon.
+            .card
+              .card-header
+                ul.nav.nav-tabs.card-header-tabs
+                  li.nav-item
+                    = link_to("Questioned", "#qestioned", class: "nav-link active", "data-toggle": "tab")
+                  li.nav-item
+                    = link_to("Answered", "#answered", class: "nav-link", "data-toggle": "tab")
+                  li.nav-item
+                    = link_to("Liked", "#liked", class: "nav-link", "data-toggle": "tab")
+
+              .tab-content
+                .tab-pane.active[id="questioned"]
+                  | hoge
+                .tab-pane[id="answered"]
+                  | foo
+                .tab-pane[id="liked"]
+                  | bar
