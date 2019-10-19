@@ -15,14 +15,11 @@
               .card-header
                 ul.nav.nav-tabs.card-header-tabs
                   li.nav-item
-                    a.nav-link.active[href="#questioned" data-toggle="tab"]
-                      | Questioned
+                    = link_to("Questioned", "#qestioned", class: "nav-link active", "data-toggle": "tab")
                   li.nav-item
-                    a.nav-link[href="#answered" data-toggle="tab"]
-                      | Answered
+                    = link_to("Answered", "#answered", class: "nav-link", "data-toggle": "tab")
                   li.nav-item
-                    a.nav-link[href="#liked" data-toggle="tab"]
-                      | Liked
+                    = link_to("Liked", "#liked", class: "nav-link", "data-toggle": "tab")
 
               .tab-content
                 .tab-pane.active[id="questioned"]
