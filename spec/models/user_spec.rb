@@ -100,7 +100,23 @@ RSpec.describe User, type: :model do
     expect(user.errors[:password_confirmation]).to include("has already been taken")
   end
 
-  it "重複したAtCoder IDがある場合は無効な状態である"
+  it "重複したAtCoder IDがある場合は無効な状態である" do
+    User.create(
+      name: "chokudai",
+      password: "hogefoobarfu",
+      atcoder_id: "chokudai",
+    )
+
+    user = User.new(
+      name: "aoki",
+      password: "hogehogehoge",
+      atcoder_id: "chokudai",
+    )
+
+    user.valid?
+    expect(user.errors[:atcoder_id]).to include("has already been taken")
+  end
+
   it "AtCoder IDがAtCoderに登録されていない場合は無効な状態である"
   it "ユーザーが投稿した質問をリストとして返す"
 end
