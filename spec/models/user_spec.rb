@@ -34,6 +34,7 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include("has already been taken")
   end
 
+  it "パスワードがなければ無効な状態である"
   it "パスワードが12文字以上なら有効な状態である"
   it "パスワードが11文字以下なら無効な状態である"
   it "重複したパスワードがある場合は無効な状態である"
