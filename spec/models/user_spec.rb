@@ -53,7 +53,16 @@ RSpec.describe User, type: :model do
     expect(user.errors[:password]).to include("can't be blank")
   end
 
-  it "パスワードが12文字以上なら有効な状態である"
+  it "パスワードが12文字以上なら有効な状態である" do
+    user = User.new(
+      name: "chokudai",
+      password: "hogefoobarfu",
+      atcoder_id: "",
+    )
+
+    expect(user).to be_valid
+  end
+
   it "パスワードが11文字以下なら無効な状態である"
   it "重複したパスワードがある場合は無効な状態である"
   it "重複したAtCoder IDがある場合は無効な状態である"
