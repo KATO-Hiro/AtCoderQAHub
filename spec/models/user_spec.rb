@@ -63,7 +63,16 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it "パスワードが11文字以下なら無効な状態である"
+  it "パスワードが11文字以下なら無効な状態である" do
+    user = User.new(
+      name: "chokudai",
+      password: "a" * 11,
+      atcoder_id: "",
+    )
+
+    expect(user).to_not be_valid
+  end
+
   it "重複したパスワードがある場合は無効な状態である"
   it "重複したAtCoder IDがある場合は無効な状態である"
   it "AtCoder IDがAtCoderに登録されていない場合は無効な状態である"
