@@ -44,5 +44,6 @@ RSpec.describe User, type: :model do
   it "パスワードが11文字以下なら無効な状態である"
   it "重複したパスワードがある場合は無効な状態である"
   it "重複したAtCoder IDがある場合は無効な状態である"
+  it "AtCoder IDがAtCoderに登録されていない場合は無効な状態である"
   it "ユーザーが投稿した質問をリストとして返す"
 end
