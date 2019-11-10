@@ -17,7 +17,23 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include("can't be blank")
   end
 
-  it "重複したハンドル名なら無効な状態である"
+  it "重複したハンドル名なら無効な状態である" do
+    User.create(
+      name: "chokudai",
+      password: "hogefoobarfu",
+      atcoder_id: "",
+    )
+
+    user = User.new(
+      name: "chokudai",
+      password: "hogehogehoge",
+      atcoder_id: "",
+    )
+
+    user.valid?
+    expect(user.errors[:name]).to include("has already been taken")
+  end
+
   it "パスワードが12文字以上なら有効な状態である"
   it "パスワードが11文字以下なら無効な状態である"
   it "重複したパスワードがある場合は無効な状態である"
