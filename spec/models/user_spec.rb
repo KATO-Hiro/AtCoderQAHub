@@ -17,6 +17,18 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include("can't be blank")
   end
 
+  it "空白スペース（1文字）のみのハンドル名は無効な状態である" do
+    user = User.new(name: " ")
+    user.valid?
+    expect(user.errors[:name]).to include("can't be blank")
+  end
+
+  it "空白スペース（2文字）のみのハンドル名は無効な状態である" do
+    user = User.new(name: "  ")
+    user.valid?
+    expect(user.errors[:name]).to include("can't be blank")
+  end
+
   it "重複したハンドル名なら無効な状態である" do
     User.create(
       name: "chokudai",
