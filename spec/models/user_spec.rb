@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
     user = User.new(
       name: "hiro_hiro",
       password: "hogefoobarfu",
+      password_confirmation: "hogefoobarfu",
       atcoder_id: "",
     )
 
