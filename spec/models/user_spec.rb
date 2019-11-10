@@ -82,7 +82,24 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
-  it "重複したパスワードがある場合は無効な状態である"
+  pending "重複したパスワードがある場合は無効な状態である" do
+    User.create(
+      name: "takahashi",
+      password: "takoyaki_daisuki",
+      password_confirmation: "takoyaki_daisuki",
+      atcoder_id: "",
+    )
+
+    user = User.new(
+      name: "aoki",
+      password: "takoyaki_daisuki",
+      password_confirmation: "takoyaki_daisuki",
+      atcoder_id: "",
+    )
+
+    expect(user.errors[:password_confirmation]).to include("has already been taken")
+  end
+
   it "重複したAtCoder IDがある場合は無効な状態である"
   it "AtCoder IDがAtCoderに登録されていない場合は無効な状態である"
   it "ユーザーが投稿した質問をリストとして返す"
