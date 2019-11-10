@@ -63,6 +63,15 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it "空白のパスワードは無効な状態である" do
+    user = User.new(
+      password: " " * 12
+    )
+
+    user.valid?
+    expect(user).to_not be_valid
+  end
+
   it "パスワードが11文字以下なら無効な状態である" do
     user = User.new(
       name: "chokudai",
