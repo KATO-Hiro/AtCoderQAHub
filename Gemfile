@@ -80,6 +80,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
   gem 'solargraph'
+  # A static analysis security vulnerability scanner for Ruby on Rails applications.
+  gem 'brakeman'
 end
 
 group :test do
