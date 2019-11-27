@@ -4,14 +4,6 @@ RSpec.describe User, type: :model do
   describe "バリデーション" do
     context "有効な状態" do
       it "ハンドル名とパスワード（12文字以上）があれば有効な状態である" do
-        # user = User.new(
-        #   name: "hiro_hiro",
-        #   password: "hogefoobarfu",
-        #   password_confirmation: "hogefoobarfu",
-        #   atcoder_id: "",
-        # )
-
-        # expect(user).to be_valid
         expect(FactoryBot.build(:user)).to be_valid
       end
     end
