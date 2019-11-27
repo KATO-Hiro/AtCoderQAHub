@@ -35,10 +35,11 @@ RSpec.describe User, type: :model do
       end
 
       it "重複したハンドル名なら無効な状態である" do
-        User.create(
-          name: "chokudai",
-          password: "hogefoobarfu",
-          atcoder_id: "",
+        FactoryBot.create(
+          :user,
+          name:  "chokudai" ,
+          password:  "hogefoobarfu" ,
+          atcoder_id:  ""
         )
 
         @user.name = "chokudai"
@@ -71,7 +72,8 @@ RSpec.describe User, type: :model do
       end
 
       pending "重複したパスワードがある場合は無効な状態である" do
-        User.create(
+        FactoryBot.create(
+          :user,
           name: "takahashi",
           password: "takoyaki_daisuki",
           password_confirmation: "takoyaki_daisuki",
@@ -86,7 +88,8 @@ RSpec.describe User, type: :model do
       end
 
       it "重複したAtCoder IDがある場合は無効な状態である" do
-        User.create(
+        FactoryBot.create(
+          :user,
           name: "chokudai",
           password: "hogefoobarfu",
           atcoder_id: "chokudai",
