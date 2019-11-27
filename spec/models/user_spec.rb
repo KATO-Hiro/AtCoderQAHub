@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
 
     context "無効な状態" do
       before do
-        @user = User.new()
+        @user = FactoryBot.build(:user)
       end
 
       it "ハンドル名がなければ無効な状態である" do
