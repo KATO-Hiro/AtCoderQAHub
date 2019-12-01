@@ -1,7 +1,9 @@
 FROM ruby:2.6.3
 
 # Run updates
-RUN apt-get update -qq && apt-get install -y build-essential mysql-client
+# See:
+# https://yourmystar-engineer.hatenablog.jp/entry/2019/07/15/140644
+RUN apt-get update -qq && apt-get install -y build-essential default-mysql-client
 
 # https://github.com/nodesource/distributions#installation-instructions
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
