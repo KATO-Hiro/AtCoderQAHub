@@ -27,7 +27,7 @@ Comming soon.
 
 ## Usage
 
-1. Choose a problem and click "Open ▶" button on the right
+1. Choose a problem and click "Open ▶︎" button on the right
 2. Choose a question from the list, click its link
 3. If you are logged in, you can ask a question and answer the question
 
@@ -45,11 +45,18 @@ $ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
 # Build Dockerfile
 $ docker-compose build
 
+# Create and migrate DB
+docker-compose run web rails db:create
+docker-compose run web rails db:migrate
+
 # Run docker container
 $ docker-compose up -d
 
 # Run a command (ex: View rails version)
 $ docker-compose run web rails --version
+
+# Restart docker container
+$ docker-compose restart
 
 # Stop docker container
 $ docker-compose down
