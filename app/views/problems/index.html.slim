@@ -3,32 +3,24 @@
     .container
       .heading
         .problems
-          ul
-            li
-              a[href="#abc"]
-                | ABC
-            li
-              a[href="#arc"]
-                | ARC
-            li
-              a[href="#agc"]
-                | AGC
-            li
-              a[href="#others"]
-                | Others
+          ul.btn-group[role="group"]
+            = link_to("ABC", "#abc", class: "btn btn-secondary btn-lg active")
+            = link_to("ARC", "#arc", class: "btn btn-secondary btn-lg")
+            = link_to("AGC", "#agc", class: "btn btn-secondary btn-lg")
+            = link_to("Others", "#others", class: "btn btn-secondary btn-lg")
 
-          #abc
+          section#abc
             - contests_abc = Contest.abc.page(params[:page]).per(5)
             = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
 
-          #arc
+          section#arc
             - contests_arc = Contest.arc.page(params[:page]).per(5)
             = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
 
-          #agc
+          section#agc
             - contests_agc = Contest.agc.page(params[:page]).per(5)
             = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
 
-          #others
+          section#others
             - contests_others = Contest.others.page(params[:page]).per(5)
             = render "problem", contests: contests_others, title: "Other Contests"
