@@ -11,6 +11,9 @@ class Contest < ApplicationRecord
     end
 
     # agc
+    def agc
+      return Contest.all.where("contest_id LIKE?", "agc%").order(start_epoch_second: :desc)
+    end
 
     # others
   end
