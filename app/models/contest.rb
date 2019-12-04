@@ -16,6 +16,9 @@ class Contest < ApplicationRecord
     end
 
     # others
+    def others
+      return Contest.all.where.not("contest_id like? or contest_id like? or contest_id like?", "abc%", "arc%", "agc%").order(start_epoch_second: :desc)
+    end
   end
 
   def held_on_the_same_day?
