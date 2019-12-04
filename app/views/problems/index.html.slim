@@ -3,35 +3,32 @@
     .container
       .heading
         .problems
-          .card
-            .card-header
-              ul.nav.nav-tabs.card-header-tabs
-                li.nav-item
-                  a.nav-link.active[href="#abc" data-toggle="tab"]
-                    | ABC
-                li.nav-item
-                  a.nav-link[href="#arc" data-toggle="tab"]
-                    | ARC
-                li.nav-item
-                  a.nav-link[href="#agc" data-toggle="tab"]
-                    | AGC
-                li.nav-item
-                  a.nav-link[href="#others" data-toggle="tab"]
-                    | Others
+          ul
+            li
+              a[href="#abc"]
+                | ABC
+            li
+              a[href="#arc"]
+                | ARC
+            li
+              a[href="#agc"]
+                | AGC
+            li
+              a[href="#others"]
+                | Others
 
-            .tab-content
-              .tab-pane.active[id="abc"]
-                - contests_abc = Contest.abc.page(params[:page]).per(5)
-                = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
+          #abc
+            - contests_abc = Contest.abc.page(params[:page]).per(5)
+            = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
 
-              .tab-pane[id="arc"]
-                - contests_arc = Contest.arc.page(params[:page]).per(5)
-                = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
+          #arc
+            - contests_arc = Contest.arc.page(params[:page]).per(5)
+            = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
 
-              .tab-pane[id="agc"]
-                - contests_agc = Contest.agc.page(params[:page]).per(5)
-                = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
+          #agc
+            - contests_agc = Contest.agc.page(params[:page]).per(5)
+            = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
 
-              .tab-pane[id="others"]
-                - contests_others = Contest.others.page(params[:page]).per(5)
-                = render "problem", contests: contests_others, title: "Other Contests"
+          #others
+            - contests_others = Contest.others.page(params[:page]).per(5)
+            = render "problem", contests: contests_others, title: "Other Contests"
