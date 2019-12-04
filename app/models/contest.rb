@@ -1,4 +1,12 @@
 class Contest < ApplicationRecord
+  # abc
+
+  # arc
+
+  # agc
+
+  # others
+
   def held_on_the_same_day?
     contests = Contest.where(start_epoch_second: self.start_epoch_second)
 
