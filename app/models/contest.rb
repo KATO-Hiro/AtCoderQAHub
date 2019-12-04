@@ -6,6 +6,9 @@ class Contest < ApplicationRecord
     end
 
     # arc
+    def arc
+      return Contest.all.where("contest_id LIKE?", "arc%").order(start_epoch_second: :desc)
+    end
 
     # agc
 
