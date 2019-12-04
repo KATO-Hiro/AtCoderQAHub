@@ -20,20 +20,18 @@
                     | Others
 
             .tab-content
-              - contests = @contests
-
               .tab-pane.active[id="abc"]
-                - contests_abc = contests.where("contest_id LIKE?", "abc%").order(start_epoch_second: :desc)
+                - contests_abc = Contest.abc.page(params[:page]).per(5)
                 = render "problem", contests: contests_abc, title: "AtCoder Beginner Contest"
 
               .tab-pane[id="arc"]
-                - contests_arc = contests.where("contest_id LIKE?", "arc%").order(start_epoch_second: :desc)
+                - contests_arc = Contest.arc.page(params[:page]).per(5)
                 = render "problem", contests: contests_arc, title: "AtCoder Regular Contest"
 
               .tab-pane[id="agc"]
-                - contests_agc = contests.where("contest_id LIKE?", "agc%").order(start_epoch_second: :desc)
+                - contests_agc = Contest.agc.page(params[:page]).per(5)
                 = render "problem", contests: contests_agc, title: "AtCoder Grand Contest"
 
               .tab-pane[id="others"]
-                - contests_others = contests.where.not("contest_id like? or contest_id like? or contest_id like?", "abc%", "arc%", "agc%").order(start_epoch_second: :desc)
+                - contests_others = Contest.others.page(params[:page]).per(5)
                 = render "problem", contests: contests_others, title: "Other Contests"
