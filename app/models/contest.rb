@@ -1,11 +1,16 @@
 class Contest < ApplicationRecord
-  # abc
+  class << self
+    # abc
+    def abc
+      return Contest.all.where("contest_id LIKE?", "abc%").order(start_epoch_second: :desc)
+    end
 
-  # arc
+    # arc
 
-  # agc
+    # agc
 
-  # others
+    # others
+  end
 
   def held_on_the_same_day?
     contests = Contest.where(start_epoch_second: self.start_epoch_second)
