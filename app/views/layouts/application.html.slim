@@ -18,8 +18,15 @@ html
           ul.navbar-nav
             li.nav-item
               = link_to("Home", "/", class: "nav-link")
-            li.nav-item
-              = link_to("Problems", "/problems", class: "nav-link")
+            li.nav-item.dropdown
+              = link_to("Problems", "/problems", {class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "role": "button", "aria-haspopup": "true", "aria-expanded": "false"})
+
+              .dropdown-menu
+                = link_to("AtCoder Beginner Contest", "#", class: "dropdown-item")
+                = link_to("AtCoder Regular Contest", "#", class: "dropdown-item")
+                = link_to("AtCoder Grand Contest", "#", class: "dropdown-item")
+                = link_to("Other Contests", "#", class: "dropdown-item")
+
             li.nav-item
               = link_to("Questions", "/questions", class: "nav-link")
             li.nav-item
