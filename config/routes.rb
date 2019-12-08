@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   get "/problems"         , to: "problems#index"
   get "/problems/new"     , to: "problems#new"
+  get "/problems/abc"     , to: "problems#abc"
+  get "/problems/arc"     , to: "problems#arc"
+  get "/problems/agc"     , to: "problems#agc"
+  get "/problems/other"   , to: "problems#other"
   get "/problems/:task_id", to: "problems#show"
   post "/problems/create" , to: "problems#create"
 

@@ -70,7 +70,7 @@ class UsersController < ApplicationController
       # ユーザー情報をブラウザに保存
       session[:user_id] = @user.id
       flash[:notice] = "Login successful!"
-      redirect_to("/problems")
+      redirect_to("/problems/abc")
     else
       # フォームで使えるように用意
       @error_message = "Incorrect username or password."
