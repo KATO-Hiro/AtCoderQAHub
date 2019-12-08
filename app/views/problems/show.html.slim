@@ -62,4 +62,15 @@
 
           p
 
-          = link_to("◀ Return to list", "/problems/", class: "btn btn-outline-secondary btn-sm")
+          - problems_url = nil
+
+          - if @problem.task_id =~ /abc\d{3}/
+            - problems_url = "/problems/abc"
+          - elsif @problem.task_id =~ /arc\d{3}/
+            - problems_url = "/problems/arc"
+          - elsif @problem.task_id =~ /agc\d{3}/
+            - problems_url = "/problems/agc"
+          - else
+            - problems_url = "/problems/other"
+
+          = link_to("◀ Return to list", problems_url, class: "btn btn-outline-secondary btn-sm")
