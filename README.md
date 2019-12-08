@@ -1,6 +1,6 @@
-# AtCoderQAHubSandbox
+# AtCoderQAHub
 
-Represents a mockup for Q&amp;A board for AtCoder users.
+Represents a Q&amp;A board for AtCoder users.
 
 ## Description
 
@@ -36,7 +36,7 @@ Comming soon.
 Paste the following commands at a Terminal prompt.
 
 ```terminal
-$ git clone git@github.com:KATO-Hiro/AtCoderQAHubSandbox.git
+$ git clone git@github.com:KATO-Hiro/AtCoderQAHub.git
 ```
 
 ## Getting started
