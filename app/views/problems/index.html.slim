@@ -3,10 +3,4 @@
     .container
       .heading
         .problems
-          ul.btn-group[role="group"]
-            = link_to("ABC", "#abc", class: "btn btn-secondary btn-lg active")
-            = link_to("ARC", "#arc", class: "btn btn-secondary btn-lg")
-            = link_to("AGC", "#agc", class: "btn btn-secondary btn-lg")
-            = link_to("Others", "#others", class: "btn btn-secondary btn-lg")
-
           = render "problem", contests: @selected_problems, title: @contest_type
