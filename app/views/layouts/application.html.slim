@@ -22,10 +22,10 @@ html
               = link_to("Problems", "/problems", {class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "role": "button", "aria-haspopup": "true", "aria-expanded": "false"})
 
               .dropdown-menu
-                = link_to("AtCoder Beginner Contest", "#", class: "dropdown-item")
-                = link_to("AtCoder Regular Contest", "#", class: "dropdown-item")
-                = link_to("AtCoder Grand Contest", "#", class: "dropdown-item")
-                = link_to("Other Contests", "#", class: "dropdown-item")
+                = link_to("AtCoder Beginner Contest", "/problems/abc", class: "dropdown-item")
+                = link_to("AtCoder Regular Contest", "/problems/arc", class: "dropdown-item")
+                = link_to("AtCoder Grand Contest", "/problems/agc", class: "dropdown-item")
+                = link_to("Other Contests", "/problems/other", class: "dropdown-item")
 
             li.nav-item
               = link_to("Questions", "/questions", class: "nav-link")

@@ -77,6 +77,34 @@ class ProblemsController < ApplicationController
     redirect_to("/problems/new")
   end
 
+  def abc
+    @selected_problems = Contest.abc.page(params[:page]).per(5)
+    @contest_type = "AtCoder Beginner Contest"
+
+    render("problems/index")
+  end
+
+  def arc
+    @selected_problems = Contest.arc.page(params[:page]).per(5)
+    @contest_type = "AtCoder Regular Contest"
+
+    render("problems/index")
+  end
+
+  def agc
+    @selected_problems = Contest.agc.page(params[:page]).per(5)
+    @contest_type = "AtCoder Grand Contest"
+
+    render("problems/index")
+  end
+
+  def other
+    @selected_problems = Contest.others.page(params[:page]).per(5)
+    @contest_type = "Other Contests"
+
+    render("problems/index")
+  end
+
 private
   def fetch_api_in_json_format(url)
     response = Faraday.get url
