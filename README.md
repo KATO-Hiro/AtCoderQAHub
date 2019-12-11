@@ -25,6 +25,11 @@ Comming soon.
 - MySQL 8.0.16
 - Docker Desktop 19.03+
 
+### Optional
+
+- [fish](https://fishshell.com/)
+- [fisher](https://github.com/jorgebucaran/fisher)
+
 ## Usage
 
 1. Choose a problem and click "Open ▶︎" button on the right
@@ -58,8 +63,51 @@ $ docker-compose run web rails --version
 # Restart docker container
 $ docker-compose restart
 
+# Run RSpec
+$ docker-compose exec web bin/rspec
+
+## Note:
+if "exec: \"bin/rspec\": permission denied":
+$ docker-compose exec web bash
+$ chmod +x bin/rspec
+
 # Stop docker container
 $ docker-compose down
+```
+
+### For fish shell user
+
+```terminal
+# Run the following command if needs.
+$ cp .config/fish/functions/*.fish ~/.config/fish/functions/
+
+# Usage
+## See:
+.config/fish/functions/docker_usage.fish
+$ docker_usage
+
+# Initial settings(build image and create and migrate database)
+$ init
+
+# Build Images
+$ build
+
+# Run docker container
+$ start
+
+# Run RSpec
+$ run_rspec
+
+## Note:
+if "exec: \"bin/rspec\": permission denied":
+$ docker-compose exec web bash
+$ chmod +x bin/rspec
+
+# Restart docker container
+$ restart
+
+# Stop docker container
+$ stop
 ```
 
 ## Links
